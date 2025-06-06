@@ -1,71 +1,70 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;600;700&family=Orbitron:wght@400;700;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Grunge Street Design System */
+/* Urban Street Design System */
 @layer base {
   :root {
-    --background: 45 15% 8%; /* Dark grunge background */
-    --foreground: 0 0% 95%;
+    --background: 43 30% 92%; /* Bege claro */
+    --foreground: 0 0% 10%; /* Preto suave */
 
-    --card: 240 15% 12%;
-    --card-foreground: 0 0% 95%;
+    --card: 43 20% 88%;
+    --card-foreground: 0 0% 10%;
 
-    --popover: 240 15% 12%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 43 30% 90%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 270 80% 60%; /* Vibrant purple */
+    --primary: 270 100% 30%; /* Roxo escuro vibrante */
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 120 40% 25%; /* Dark green */
+    --secondary: 120 60% 25%; /* Verde folha */
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 10% 15%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 43 15% 85%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 280 60% 50%;
+    --accent: 270 80% 35%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 240 20% 20%;
-    --input: 240 20% 20%;
-    --ring: 270 80% 60%;
+    --border: 43 20% 80%;
+    --input: 43 20% 85%;
+    --ring: 270 100% 30%;
 
     --radius: 0.75rem;
 
-    /* Custom grunge colors */
-    --purple-primary: 270 80% 60%;
-    --purple-dark: 270 70% 40%;
-    --purple-light: 280 60% 70%;
-    --green-dark: 120 40% 25%;
-    --green-accent: 120 50% 35%;
-    --beige-dark: 45 25% 15%;
-    --beige-light: 45 30% 85%;
+    /* Urban street colors */
+    --purple-street: 270 100% 30%;
+    --purple-glow: 280 80% 50%;
+    --green-leaf: 120 60% 25%;
+    --beige-base: 43 30% 92%;
+    --kraft-paper: 38 25% 88%;
   }
 
   .dark {
-    --background: 45 15% 8%;
-    --foreground: 0 0% 95%;
-    --card: 240 15% 12%;
-    --card-foreground: 0 0% 95%;
-    --popover: 240 15% 12%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 270 80% 60%;
+    --background: 43 30% 92%;
+    --foreground: 0 0% 10%;
+    --card: 43 20% 88%;
+    --card-foreground: 0 0% 10%;
+    --popover: 43 30% 90%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 270 100% 30%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 120 40% 25%;
+    --secondary: 120 60% 25%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 10% 15%;
-    --muted-foreground: 240 5% 65%;
-    --accent: 280 60% 50%;
+    --muted: 43 15% 85%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 270 80% 35%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
-    --border: 240 20% 20%;
-    --input: 240 20% 20%;
-    --ring: 270 80% 60%;
+    --border: 43 20% 80%;
+    --input: 43 20% 85%;
+    --ring: 270 100% 30%;
   }
 }
 
@@ -75,69 +74,80 @@
   }
   body {
     @apply bg-background text-foreground;
-    background: linear-gradient(135deg, hsl(45, 15%, 8%) 0%, hsl(240, 15%, 12%) 100%);
+    background: linear-gradient(135deg, hsl(43, 30%, 92%) 0%, hsl(38, 25%, 88%) 100%);
     min-height: 100vh;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Chakra Petch', system-ui, sans-serif;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 30%, rgba(120, 53, 180, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(34, 139, 34, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
   }
 }
 
 @layer components {
-  /* Grunge Gradients */
-  .purple-gradient {
-    background: linear-gradient(135deg, hsl(270, 80%, 60%) 0%, hsl(280, 60%, 50%) 50%, hsl(270, 70%, 40%) 100%);
+  /* Urban Street Gradients */
+  .purple-street-gradient {
+    background: linear-gradient(135deg, hsl(270, 100%, 30%) 0%, hsl(280, 80%, 35%) 100%);
   }
   
-  .purple-gradient-reverse {
-    background: linear-gradient(315deg, hsl(270, 80%, 60%) 0%, hsl(280, 60%, 50%) 50%, hsl(270, 70%, 40%) 100%);
+  .purple-street-gradient-reverse {
+    background: linear-gradient(315deg, hsl(270, 100%, 30%) 0%, hsl(280, 80%, 35%) 100%);
   }
   
-  .green-gradient {
-    background: linear-gradient(135deg, hsl(120, 50%, 35%) 0%, hsl(120, 40%, 25%) 100%);
+  .green-leaf-gradient {
+    background: linear-gradient(135deg, hsl(120, 60%, 25%) 0%, hsl(130, 50%, 30%) 100%);
   }
   
-  .dark-gradient {
-    background: linear-gradient(135deg, hsl(240, 15%, 12%) 0%, hsl(45, 15%, 8%) 100%);
+  .kraft-gradient {
+    background: linear-gradient(135deg, hsl(43, 30%, 92%) 0%, hsl(38, 25%, 88%) 100%);
   }
 
-  .neon-gradient {
-    background: linear-gradient(45deg, #8b5cf6, #a855f7, #9333ea, #7c3aed);
-    background-size: 400% 400%;
-    animation: gradient-shift 3s ease infinite;
-  }
-
-  /* Grunge Cards */
-  .grunge-card {
-    @apply bg-card/80 backdrop-blur-sm rounded-xl border border-border/50 shadow-2xl;
-    background: linear-gradient(135deg, hsl(240, 15%, 12%) 0%, hsl(240, 20%, 8%) 100%);
+  /* Urban Cards */
+  .urban-card {
+    @apply bg-card/90 backdrop-blur-sm rounded-xl border border-border shadow-lg;
+    background: linear-gradient(135deg, hsl(43, 25%, 90%) 0%, hsl(40, 20%, 85%) 100%);
     position: relative;
     overflow: hidden;
+    transition: all 0.3s ease;
   }
   
-  .grunge-card::before {
+  .urban-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, hsl(270, 80%, 60%), transparent);
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(270, 100%, 30%), transparent);
   }
 
-  .grunge-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
-    transition: all 0.3s ease;
+  .urban-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(120, 53, 180, 0.15);
   }
   
-  /* Grunge Buttons */
-  .btn-grunge {
+  /* Street Buttons */
+  .btn-street {
     @apply px-6 py-3 rounded-lg font-bold text-white relative overflow-hidden transition-all duration-300 transform;
-    background: linear-gradient(135deg, hsl(270, 80%, 60%) 0%, hsl(280, 60%, 50%) 100%);
-    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
-    border: 1px solid hsl(270, 80%, 70%);
+    background: linear-gradient(135deg, hsl(270, 100%, 30%) 0%, hsl(280, 80%, 35%) 100%);
+    box-shadow: 0 4px 15px rgba(120, 53, 180, 0.3);
+    border: 1px solid hsl(270, 100%, 35%);
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 700;
   }
   
-  .btn-grunge::before {
+  .btn-street::before {
     content: '';
     position: absolute;
     top: 0;
@@ -148,119 +158,124 @@
     transition: left 0.5s;
   }
   
-  .btn-grunge:hover::before {
+  .btn-street:hover::before {
     left: 100%;
   }
   
-  .btn-grunge:hover {
+  .btn-street:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.6);
+    box-shadow: 0 8px 25px rgba(120, 53, 180, 0.4);
   }
 
-  .btn-grunge-secondary {
+  .btn-street-secondary {
     @apply px-6 py-3 rounded-lg font-bold text-white relative overflow-hidden transition-all duration-300 transform;
-    background: linear-gradient(135deg, hsl(120, 50%, 35%) 0%, hsl(120, 40%, 25%) 100%);
-    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
-    border: 1px solid hsl(120, 50%, 40%);
+    background: linear-gradient(135deg, hsl(120, 60%, 25%) 0%, hsl(130, 50%, 30%) 100%);
+    box-shadow: 0 4px 15px rgba(34, 139, 34, 0.3);
+    border: 1px solid hsl(120, 60%, 30%);
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 700;
   }
 
-  /* Neon text effects */
-  .neon-text {
-    color: hsl(270, 80%, 60%);
+  /* Urban Glow Text */
+  .urban-glow {
+    color: white;
     text-shadow: 
-      0 0 5px hsl(270, 80%, 60%),
-      0 0 10px hsl(270, 80%, 60%),
-      0 0 15px hsl(270, 80%, 60%);
+      0 0 10px hsl(270, 100%, 30%),
+      0 0 20px hsl(270, 100%, 30%),
+      0 0 30px hsl(270, 100%, 30%);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
   }
 
-  .neon-text-green {
-    color: hsl(120, 50%, 35%);
+  .urban-glow-green {
+    color: hsl(120, 60%, 25%);
     text-shadow: 
-      0 0 5px hsl(120, 50%, 35%),
-      0 0 10px hsl(120, 50%, 35%);
+      0 0 5px hsl(120, 60%, 25%),
+      0 0 10px hsl(120, 60%, 25%);
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 600;
   }
 
-  /* Grunge textures */
-  .grunge-texture {
+  /* Header texture pattern */
+  .header-texture {
     position: relative;
+    background: linear-gradient(135deg, hsl(270, 100%, 25%) 0%, hsl(280, 90%, 30%) 100%);
   }
-  
-  .grunge-texture::after {
+
+  .header-texture::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-      radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.1) 0%, transparent 50%);
+    background-image: 
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm15 0c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     pointer-events: none;
   }
+
+  /* Street Typography */
+  .title-street {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    letter-spacing: 2px;
+  }
+
+  .text-street {
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 600;
+  }
+
+  .text-body-street {
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+  }
 }
 
-/* Animations */
-@keyframes gradient-shift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-@keyframes float {
+/* Urban Animations */
+@keyframes float-urban {
   0%, 100% {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-15px);
   }
 }
 
-@keyframes pulse-neon {
+@keyframes pulse-urban {
   0%, 100% {
     text-shadow: 
-      0 0 5px hsl(270, 80%, 60%),
-      0 0 10px hsl(270, 80%, 60%),
-      0 0 15px hsl(270, 80%, 60%);
+      0 0 10px hsl(270, 100%, 30%),
+      0 0 20px hsl(270, 100%, 30%);
   }
   50% {
     text-shadow: 
-      0 0 10px hsl(270, 80%, 60%),
-      0 0 20px hsl(270, 80%, 60%),
-      0 0 30px hsl(270, 80%, 60%);
+      0 0 15px hsl(270, 100%, 30%),
+      0 0 30px hsl(270, 100%, 30%),
+      0 0 40px hsl(270, 100%, 30%);
   }
 }
 
-@keyframes glitch {
-  0%, 100% {
-    transform: translate(0);
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
   }
-  20% {
-    transform: translate(-2px, 2px);
-  }
-  40% {
-    transform: translate(-2px, -2px);
-  }
-  60% {
-    transform: translate(2px, 2px);
-  }
-  80% {
-    transform: translate(2px, -2px);
+  100% {
+    transform: translateX(100%);
   }
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+.animate-float-urban {
+  animation: float-urban 4s ease-in-out infinite;
 }
 
-.animate-pulse-neon {
-  animation: pulse-neon 2s ease-in-out infinite;
+.animate-pulse-urban {
+  animation: pulse-urban 2s ease-in-out infinite;
 }
 
-.animate-glitch:hover {
-  animation: glitch 0.3s ease-in-out;
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
 }
 
 /* Scrollbar styling */
@@ -269,14 +284,27 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(240, 15%, 12%);
+  background: hsl(43, 20%, 85%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, hsl(270, 80%, 60%), hsl(280, 60%, 50%));
+  background: linear-gradient(135deg, hsl(270, 100%, 30%), hsl(120, 60%, 25%));
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, hsl(280, 60%, 50%), hsl(270, 80%, 60%));
+  background: linear-gradient(135deg, hsl(280, 80%, 35%), hsl(130, 50%, 30%));
+}
+
+/* Urban responsive utilities */
+@media (max-width: 768px) {
+  .urban-glow {
+    text-shadow: 
+      0 0 5px hsl(270, 100%, 30%),
+      0 0 10px hsl(270, 100%, 30%);
+  }
+  
+  .btn-street {
+    @apply px-4 py-2 text-sm;
+  }
 }

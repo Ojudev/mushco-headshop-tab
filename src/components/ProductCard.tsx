@@ -19,7 +19,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     e.preventDefault();
     e.stopPropagation();
     dispatch({ type: 'ADD_TO_CART', payload: product });
-    toast.success(`${product.name} adicionado ao carrinho!`);
+    toast.success(`${product.name} adicionado ao carrinho! 🔥`);
   };
 
   const handleToggleFavorite = (e: React.MouseEvent) => {
@@ -27,10 +27,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     e.stopPropagation();
     if (isFavorite) {
       dispatch({ type: 'REMOVE_FROM_FAVORITES', payload: product.id });
-      toast.info('Removido dos favoritos');
+      toast.info('Removido dos favoritos 💔');
     } else {
       dispatch({ type: 'ADD_TO_FAVORITES', payload: product.id });
-      toast.success('Adicionado aos favoritos!');
+      toast.success('Adicionado aos favoritos! 💚');
     }
   };
 
@@ -43,24 +43,24 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <Link to={`/produto/${product.id}`} className="block group">
-      <div className="grunge-card p-0 overflow-hidden transform hover:scale-105 transition-all duration-300 relative">
+      <div className="urban-card p-0 overflow-hidden transform hover:scale-105 transition-all duration-300 relative">
         {/* Badges */}
         <div className="absolute top-3 left-3 z-20 flex flex-col space-y-2">
           {product.isBestSeller && (
-            <span className="bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center space-x-1 animate-pulse">
+            <span className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center space-x-1 animate-pulse shadow-lg">
               <Flame className="w-3 h-3" />
-              <span>HOT</span>
+              <span className="text-street">DA QUEBRADA</span>
             </span>
           )}
           {product.isNew && (
-            <span className="bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center space-x-1">
+            <span className="bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center space-x-1 shadow-lg">
               <Zap className="w-3 h-3" />
-              <span>NOVO</span>
+              <span className="text-street">NOVIDADE</span>
             </span>
           )}
           {product.discount && (
-            <span className="bg-gradient-to-r from-purple-600 to-purple-800 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse">
-              -{product.discount}% OFF
+            <span className="purple-street-gradient text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse shadow-lg">
+              <span className="text-street">-{product.discount}% OFF</span>
             </span>
           )}
         </div>
@@ -68,7 +68,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Favorite Button */}
         <button
           onClick={handleToggleFavorite}
-          className="absolute top-3 right-3 z-20 w-10 h-10 bg-black/30 hover:bg-purple-600/50 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/20"
+          className="absolute top-3 right-3 z-20 w-10 h-10 bg-black/20 hover:bg-purple-600/80 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-white/20 group-hover:scale-110"
         >
           <Heart 
             className={`w-5 h-5 transition-colors ${
@@ -78,31 +78,34 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </button>
 
         {/* Product Image */}
-        <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-900/20 to-purple-600/20 relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-transparent"></div>
-          <div className="w-full h-full flex items-center justify-center">
-            <div className="w-24 h-24 bg-purple-gradient rounded-full flex items-center justify-center">
+        <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100/50 to-green-100/30 relative">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-green-600/5"></div>
+          <div className="w-full h-full flex items-center justify-center relative">
+            <div className="w-24 h-24 purple-street-gradient rounded-full flex items-center justify-center shadow-xl animate-float-urban">
               <Zap className="w-12 h-12 text-white" />
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="w-32 h-32 bg-white/10 rounded-full animate-pulse"></div>
             </div>
           </div>
           
           {/* Hover overlay */}
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300">
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300">
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <Button
                 onClick={handleAddToCart}
-                className="btn-grunge transform scale-90 group-hover:scale-100 transition-transform duration-300"
+                className="btn-street transform scale-90 group-hover:scale-100 transition-transform duration-300 shadow-xl"
               >
                 <ShoppingCart className="w-4 h-4 mr-2" />
-                ADICIONAR
+                COMPRAR
               </Button>
             </div>
           </div>
         </div>
 
         {/* Product Info */}
-        <div className="p-4 space-y-3">
-          <h3 className="font-bold text-lg text-white group-hover:text-purple-400 transition-colors line-clamp-2">
+        <div className="p-4 space-y-3 bg-gradient-to-b from-transparent to-white/30">
+          <h3 className="font-bold text-lg text-gray-800 group-hover:text-purple-700 transition-colors line-clamp-2 text-street">
             {product.name}
           </h3>
 
@@ -115,12 +118,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                   className={`w-4 h-4 ${
                     i < Math.floor(product.rating)
                       ? 'fill-yellow-400 text-yellow-400'
-                      : 'text-gray-600'
+                      : 'text-gray-400'
                   }`}
                 />
               ))}
             </div>
-            <span className="text-sm text-gray-400">
+            <span className="text-sm text-gray-600 text-street">
               {product.rating} ({product.reviewCount})
             </span>
           </div>
@@ -128,26 +131,26 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           {/* Price */}
           <div className="space-y-1">
             <div className="flex items-center space-x-2">
-              <span className="text-2xl font-bold text-green-400 neon-text-green">
+              <span className="text-2xl font-bold text-green-700 urban-glow-green">
                 {formatPrice(product.price)}
               </span>
               {product.originalPrice && (
-                <span className="text-lg text-gray-500 line-through">
+                <span className="text-lg text-gray-500 line-through text-street">
                   {formatPrice(product.originalPrice)}
                 </span>
               )}
             </div>
             {product.discount && (
-              <p className="text-green-400 font-medium text-sm">
-                Economia de {formatPrice(product.originalPrice! - product.price)}!
+              <p className="text-green-600 font-semibold text-sm text-street">
+                Economia de {formatPrice(product.originalPrice! - product.price)}! 💰
               </p>
             )}
           </div>
 
           {/* Stock Status */}
           <div className="flex items-center justify-between">
-            <span className={`text-sm font-medium ${
-              product.inStock ? 'text-green-400' : 'text-red-400'
+            <span className={`text-sm font-semibold text-street ${
+              product.inStock ? 'text-green-600' : 'text-red-500'
             }`}>
               {product.inStock ? '✅ Disponível' : '❌ Esgotado'}
             </span>
@@ -156,7 +159,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               <Button
                 onClick={handleAddToCart}
                 size="sm"
-                className="btn-grunge text-xs px-4 py-2"
+                className="btn-street text-xs px-4 py-2 shadow-md"
               >
                 <ShoppingCart className="w-3 h-3 mr-1" />
                 COMPRAR
@@ -165,8 +168,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
         </div>
 
-        {/* Glitch effect on hover */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 bg-gradient-to-r from-purple-600 via-transparent to-green-600 animate-pulse"></div>
+        {/* Urban shimmer effect on hover */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-400/20 to-transparent transform skew-x-12 animate-shimmer"></div>
+        </div>
       </div>
     </Link>
   );
