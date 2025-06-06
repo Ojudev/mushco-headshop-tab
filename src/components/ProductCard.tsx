@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, ShoppingCart, Star, Zap, Fire } from 'lucide-react';
+import { Heart, ShoppingCart, Star, Zap, Flame } from 'lucide-react';
 import { Product } from '../types';
 import { useStore } from '../context/StoreContext';
 import { Button } from './ui/button';
@@ -48,7 +48,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className="absolute top-3 left-3 z-20 flex flex-col space-y-2">
           {product.isBestSeller && (
             <span className="bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center space-x-1 animate-pulse">
-              <Fire className="w-3 h-3" />
+              <Flame className="w-3 h-3" />
               <span>HOT</span>
             </span>
           )}

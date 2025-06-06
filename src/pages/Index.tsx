@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Truck, Shield, Headphones, Zap, Fire, Sparkles, Heart, ShoppingCart } from 'lucide-react';
+import { ArrowRight, Star, Truck, Shield, Headphones, Zap, Flame, Sparkles, Heart, ShoppingCart } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import BannerCarousel from '../components/BannerCarousel';
@@ -63,7 +63,7 @@ const Index = () => {
         <section className="container mx-auto px-4 py-16">
           <div className="flex items-center justify-between mb-12 animate-fade-in-up">
             <div className="flex items-center space-x-4">
-              <Fire className="w-10 h-10 text-orange-500 animate-pulse" />
+              <Flame className="w-10 h-10 text-orange-500 animate-pulse" />
               <div>
                 <h2 className="text-4xl md:text-5xl font-black neon-text">MAIS VENDIDOS</h2>
                 <p className="text-gray-300 text-lg mt-2">Os hits da galera</p>
