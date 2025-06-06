@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Truck, Shield, Headphones } from 'lucide-react';
+import { ArrowRight, Star, Truck, Shield, Headphones, Zap, Fire, Sparkles, Heart, ShoppingCart } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import BannerCarousel from '../components/BannerCarousel';
@@ -15,38 +15,43 @@ const Index = () => {
   const onSale = products.filter(p => p.discount).slice(0, 4);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background grunge-texture">
       <Header />
       
       <main>
         {/* Hero Banner */}
-        <section className="container mx-auto px-4 py-8">
+        <section className="container mx-auto px-4 py-8 animate-fade-in-up">
           <BannerCarousel />
         </section>
 
         {/* Categorias em Destaque */}
-        <section className="container mx-auto px-4 py-12">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-4">Explore Nossas Categorias</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Descubra nossa seleção cuidadosa de produtos premium para uma experiência única
+        <section className="container mx-auto px-4 py-16">
+          <div className="text-center mb-12 animate-fade-in-up">
+            <h2 className="text-4xl md:text-5xl font-black mb-6 neon-text animate-pulse-neon">
+              🔥 CATEGORIAS DA QUEBRADA
+            </h2>
+            <p className="text-gray-300 max-w-3xl mx-auto text-lg md:text-xl">
+              Selecione sua vibe e mergulhe no universo underground
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {categories.map((category) => (
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {categories.map((category, index) => (
               <Link
                 key={category.id}
                 to={`/categoria/${category.slug}`}
-                className="group text-center space-y-3 p-4 rounded-xl hover:bg-white hover:shadow-md transition-all duration-200"
+                className="group text-center space-y-4 p-6 grunge-card hover:scale-105 transition-all duration-300 animate-slide-in-right"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="aspect-square overflow-hidden rounded-lg bg-gray-100">
-                  <img
-                    src={category.image}
-                    alt={category.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
-                  />
+                <div className="aspect-square overflow-hidden rounded-xl bg-gradient-to-br from-purple-600/20 to-purple-800/20 border border-purple-500/30 relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-transparent"></div>
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="w-16 h-16 bg-purple-gradient rounded-full flex items-center justify-center">
+                      <Zap className="w-8 h-8 text-white" />
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-medium text-sm group-hover:text-green-600 transition-colors">
+                <h3 className="font-bold text-lg group-hover:text-purple-400 transition-colors neon-text-green">
                   {category.name}
                 </h3>
               </Link>
@@ -55,134 +60,192 @@ const Index = () => {
         </section>
 
         {/* Produtos Mais Vendidos */}
-        <section className="container mx-auto px-4 py-12">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="text-3xl font-bold mb-2">🔥 Mais Vendidos</h2>
-              <p className="text-gray-600">Os produtos favoritos dos nossos clientes</p>
+        <section className="container mx-auto px-4 py-16">
+          <div className="flex items-center justify-between mb-12 animate-fade-in-up">
+            <div className="flex items-center space-x-4">
+              <Fire className="w-10 h-10 text-orange-500 animate-pulse" />
+              <div>
+                <h2 className="text-4xl md:text-5xl font-black neon-text">MAIS VENDIDOS</h2>
+                <p className="text-gray-300 text-lg mt-2">Os hits da galera</p>
+              </div>
             </div>
             <Link to="/mais-vendidos">
-              <Button variant="outline" className="hidden md:flex items-center space-x-2">
+              <Button className="btn-grunge hidden md:flex items-center space-x-2">
                 <span>Ver Todos</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>
           </div>
+          
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {bestSellers.map((product) => (
-              <ProductCard key={product.id} product={product} />
+            {bestSellers.map((product, index) => (
+              <div key={product.id} className="animate-slide-in-right" style={{ animationDelay: `${index * 0.1}s` }}>
+                <ProductCard product={product} />
+              </div>
             ))}
           </div>
         </section>
 
-        {/* Promoção Especial */}
-        <section className="bg-gradient-to-r from-green-500 to-purple-600 text-white py-16">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl font-bold mb-4">Oferta Especial!</h2>
-            <p className="text-xl mb-6">Leve 3, Pague 2 em toda linha de sedas</p>
-            <p className="text-lg mb-8 opacity-90">Válido apenas esta semana!</p>
-            <Link to="/categoria/sedas">
-              <Button size="lg" className="bg-white text-green-600 hover:bg-gray-100">
-                Ver Sedas em Promoção
-              </Button>
-            </Link>
+        {/* Promoção Especial Grunge */}
+        <section className="py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-900 via-purple-600 to-indigo-900"></div>
+          <div className="absolute inset-0 bg-black/30"></div>
+          
+          {/* Animated background elements */}
+          <div className="absolute inset-0">
+            <div className="absolute top-10 left-10 w-32 h-32 bg-white/5 rounded-full animate-float"></div>
+            <div className="absolute top-1/2 right-20 w-24 h-24 bg-purple-400/10 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
+            <div className="absolute bottom-20 left-1/3 w-40 h-40 bg-green-400/5 rounded-full animate-float" style={{ animationDelay: '4s' }}></div>
+          </div>
+
+          <div className="container mx-auto px-4 text-center relative z-10">
+            <div className="animate-fade-in-up">
+              <Sparkles className="w-16 h-16 text-yellow-400 mx-auto mb-6 animate-pulse" />
+              <h2 className="text-5xl md:text-6xl font-black text-white mb-6 animate-pulse-neon">
+                PROMOÇÃO INSANA!
+              </h2>
+              <p className="text-2xl md:text-3xl mb-4 text-purple-200 font-bold">
+                🎯 LEVE 3, PAGUE 2
+              </p>
+              <p className="text-xl mb-8 text-gray-200">
+                Em toda linha de sedas premium!
+              </p>
+              <p className="text-lg mb-8 text-yellow-300 font-bold animate-pulse">
+                ⏰ VÁLIDO SÓ ATÉ DOMINGO!
+              </p>
+              <Link to="/categoria/sedas">
+                <Button className="btn-grunge text-xl px-12 py-6 transform hover:scale-110 transition-all duration-300">
+                  🔥 APROVEITAR AGORA
+                </Button>
+              </Link>
+            </div>
           </div>
         </section>
 
         {/* Lançamentos */}
-        <section className="container mx-auto px-4 py-12">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="text-3xl font-bold mb-2">✨ Lançamentos</h2>
-              <p className="text-gray-600">Confira as novidades que acabaram de chegar</p>
+        <section className="container mx-auto px-4 py-16">
+          <div className="flex items-center justify-between mb-12 animate-fade-in-up">
+            <div className="flex items-center space-x-4">
+              <Sparkles className="w-10 h-10 text-purple-400 animate-pulse" />
+              <div>
+                <h2 className="text-4xl md:text-5xl font-black neon-text">LANÇAMENTOS</h2>
+                <p className="text-gray-300 text-lg mt-2">Fresquinhos da fornalha</p>
+              </div>
             </div>
             <Link to="/lancamentos">
-              <Button variant="outline" className="hidden md:flex items-center space-x-2">
+              <Button className="btn-grunge-secondary hidden md:flex items-center space-x-2">
                 <span>Ver Todos</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>
           </div>
+          
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {newProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+            {newProducts.map((product, index) => (
+              <div key={product.id} className="animate-slide-in-right" style={{ animationDelay: `${index * 0.1}s` }}>
+                <ProductCard product={product} />
+              </div>
             ))}
           </div>
         </section>
 
         {/* Ofertas com Desconto */}
-        <section className="bg-gray-50 py-12">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between mb-8">
-              <div>
-                <h2 className="text-3xl font-bold mb-2">💰 Ofertas Imperdíveis</h2>
-                <p className="text-gray-600">Produtos com desconto especial por tempo limitado</p>
+        <section className="py-16 relative">
+          <div className="absolute inset-0 bg-gradient-to-br from-green-900/20 to-purple-900/20"></div>
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="flex items-center justify-between mb-12 animate-fade-in-up">
+              <div className="flex items-center space-x-4">
+                <div className="relative">
+                  <Heart className="w-10 h-10 text-red-500 animate-pulse" />
+                  <Zap className="w-6 h-6 text-yellow-400 absolute -top-1 -right-1 animate-bounce" />
+                </div>
+                <div>
+                  <h2 className="text-4xl md:text-5xl font-black neon-text">OFERTAS RAIZ</h2>
+                  <p className="text-gray-300 text-lg mt-2">Descontos que doem no coração</p>
+                </div>
               </div>
               <Link to="/promocoes">
-                <Button variant="outline" className="hidden md:flex items-center space-x-2">
+                <Button className="btn-grunge hidden md:flex items-center space-x-2">
                   <span>Ver Todas</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>
             </div>
+            
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {onSale.map((product) => (
-                <ProductCard key={product.id} product={product} />
+              {onSale.map((product, index) => (
+                <div key={product.id} className="animate-slide-in-right" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <ProductCard product={product} />
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Benefícios */}
-        <section className="container mx-auto px-4 py-16">
+        {/* Benefícios Grunge */}
+        <section className="container mx-auto px-4 py-20">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto">
-                <Truck className="w-8 h-8 text-green-600" />
+            {[
+              {
+                icon: Truck,
+                title: "FRETE GRÁTIS",
+                description: "Acima de R$ 200 em todo o Brasil",
+                gradient: "from-purple-600 to-purple-800"
+              },
+              {
+                icon: Shield,
+                title: "COMPRA BLINDADA",
+                description: "100% seguro e protegido",
+                gradient: "from-green-600 to-green-800"
+              },
+              {
+                icon: Headphones,
+                title: "SUPORTE RAIZ",
+                description: "Atendimento de segunda à sexta",
+                gradient: "from-purple-700 to-indigo-800"
+              }
+            ].map((benefit, index) => (
+              <div key={index} className="text-center space-y-6 grunge-card p-8 animate-fade-in-up" style={{ animationDelay: `${index * 0.2}s` }}>
+                <div className={`w-20 h-20 bg-gradient-to-br ${benefit.gradient} rounded-full flex items-center justify-center mx-auto relative`}>
+                  <benefit.icon className="w-10 h-10 text-white" />
+                  <div className="absolute inset-0 bg-white/20 rounded-full animate-ping"></div>
+                </div>
+                <h3 className="text-2xl font-bold neon-text">{benefit.title}</h3>
+                <p className="text-gray-300 text-lg">{benefit.description}</p>
               </div>
-              <h3 className="text-xl font-semibold">Frete Grátis</h3>
-              <p className="text-gray-600">Para pedidos acima de R$ 200 em todo o Brasil</p>
-            </div>
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto">
-                <Shield className="w-8 h-8 text-purple-600" />
-              </div>
-              <h3 className="text-xl font-semibold">Compra Segura</h3>
-              <p className="text-gray-600">Seus dados protegidos e pagamento 100% seguro</p>
-            </div>
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto">
-                <Headphones className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold">Suporte Especializado</h3>
-              <p className="text-gray-600">Atendimento personalizado de segunda a sexta</p>
-            </div>
+            ))}
           </div>
         </section>
 
-        {/* Depoimentos */}
-        <section className="bg-gray-50 py-16">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">O Que Nossos Clientes Dizem</h2>
-              <p className="text-gray-600">Avaliações reais de quem já comprou conosco</p>
+        {/* Depoimentos Grunge */}
+        <section className="py-20 relative">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 to-green-900/10"></div>
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="text-center mb-16 animate-fade-in-up">
+              <h2 className="text-4xl md:text-5xl font-black mb-6 neon-text">
+                🗣️ A GALERA FALA
+              </h2>
+              <p className="text-gray-300 text-xl">Relatos reais da quebrada</p>
             </div>
+            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="bg-white p-6 rounded-xl shadow-sm">
-                  <div className="flex items-center space-x-1 mb-4">
+                <div key={i} className="grunge-card p-8 animate-slide-in-right" style={{ animationDelay: `${i * 0.2}s` }}>
+                  <div className="flex items-center space-x-1 mb-6">
                     {[...Array(5)].map((_, j) => (
-                      <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      <Star key={j} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <p className="text-gray-600 mb-4">
-                    "Produtos de excelente qualidade e entrega super rápida. Recomendo demais a Tabacaria Verde!"
+                  <p className="text-gray-300 mb-6 text-lg leading-relaxed">
+                    "Produtos de qualidade insana e entrega mais rápida que minha ansiedade. Tabacaria Verde é o esquema!"
                   </p>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-gray-200 rounded-full"></div>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-purple-gradient rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold text-lg">{i}</span>
+                    </div>
                     <div>
-                      <p className="font-medium">Cliente {i}</p>
-                      <p className="text-sm text-gray-500">Comprador verificado</p>
+                      <p className="font-bold text-purple-400">Mano {i}</p>
+                      <p className="text-sm text-gray-400">Cliente Verificado</p>
                     </div>
                   </div>
                 </div>

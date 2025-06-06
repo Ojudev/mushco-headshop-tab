@@ -1,71 +1,112 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Zap, Star } from 'lucide-react';
 import { Button } from './ui/button';
-import { bannerSlides } from '../data/mockData';
 
 const BannerCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
+  const slides = [
+    {
+      id: 1,
+      title: "🔥 QUEIMA DE ESTOQUE",
+      subtitle: "Até 70% OFF em toda linha de bongs",
+      description: "Aproveite agora! Produtos de qualidade com preços de rua",
+      cta: "CONFERIR AGORA",
+      link: "/categoria/bongs",
+      gradient: "from-purple-600 via-purple-500 to-pink-500"
+    },
+    {
+      id: 2,
+      title: "⚡ LANÇAMENTO EXCLUSIVO",
+      subtitle: "Nova linha de pipes artesanais",
+      description: "Peças únicas feitas por artistas da cena underground",
+      cta: "VER COLEÇÃO",
+      link: "/categoria/pipes",
+      gradient: "from-purple-700 via-indigo-600 to-purple-800"
+    },
+    {
+      id: 3,
+      title: "💚 FRETE GRÁTIS",
+      subtitle: "Em compras acima de R$ 150",
+      description: "Receba em casa sem pagar nada a mais",
+      cta: "APROVEITAR",
+      link: "/",
+      gradient: "from-green-600 via-purple-600 to-purple-700"
+    }
+  ];
+
   useEffect(() => {
     if (!isPlaying) return;
 
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % bannerSlides.length);
-    }, 5000);
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000);
 
     return () => clearInterval(interval);
-  }, [isPlaying]);
+  }, [isPlaying, slides.length]);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % bannerSlides.length);
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + bannerSlides.length) % bannerSlides.length);
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
   return (
     <div 
-      className="relative h-64 md:h-80 lg:h-96 overflow-hidden rounded-xl bg-gradient-to-r from-green-400 to-purple-500"
+      className="relative h-80 md:h-96 lg:h-[28rem] overflow-hidden rounded-2xl grunge-card"
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
     >
-      {bannerSlides.map((slide, index) => (
+      {slides.map((slide, index) => (
         <div
           key={slide.id}
-          className={`absolute inset-0 transition-transform duration-500 ease-in-out ${
-            index === currentSlide ? 'translate-x-0' : 
-            index < currentSlide ? '-translate-x-full' : 'translate-x-full'
+          className={`absolute inset-0 transition-all duration-700 ease-out ${
+            index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}
         >
-          <div
-            className="relative w-full h-full bg-cover bg-center"
-            style={{
-              backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${slide.image})`
-            }}
-          >
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center text-white space-y-4 max-w-2xl px-4">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold animate-fade-in-up">
+          <div className={`relative w-full h-full bg-gradient-to-br ${slide.gradient} grunge-texture`}>
+            {/* Animated background elements */}
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute top-10 left-10 w-32 h-32 bg-white/5 rounded-full animate-float" style={{ animationDelay: '0s' }}></div>
+              <div className="absolute top-32 right-16 w-24 h-24 bg-white/5 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
+              <div className="absolute bottom-20 left-1/3 w-20 h-20 bg-white/5 rounded-full animate-float" style={{ animationDelay: '4s' }}></div>
+            </div>
+
+            <div className="relative z-10 flex items-center justify-center h-full px-8">
+              <div className="text-center text-white space-y-6 max-w-4xl">
+                <div className="flex items-center justify-center space-x-2 mb-4">
+                  <Zap className="w-6 h-6 text-yellow-400 animate-pulse" />
+                  <Star className="w-5 h-5 text-yellow-400 animate-pulse" style={{ animationDelay: '0.5s' }} />
+                  <Zap className="w-6 h-6 text-yellow-400 animate-pulse" style={{ animationDelay: '1s' }} />
+                </div>
+
+                <h1 className="text-4xl md:text-5xl lg:text-7xl font-black animate-pulse-neon tracking-wider">
                   {slide.title}
-                </h2>
-                <p className="text-lg md:text-xl animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                </h1>
+                
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold opacity-90 animate-glitch">
                   {slide.subtitle}
+                </h2>
+                
+                <p className="text-lg md:text-xl opacity-80 max-w-2xl mx-auto font-medium">
+                  {slide.description}
                 </p>
+
                 <Link to={slide.link}>
-                  <Button 
-                    size="lg" 
-                    className="btn-primary animate-fade-in-up mt-4"
-                    style={{ animationDelay: '0.4s' }}
-                  >
+                  <Button className="btn-grunge text-lg md:text-xl px-8 py-4 mt-8 transform hover:scale-105 transition-all duration-300">
                     {slide.cta}
                   </Button>
                 </Link>
               </div>
             </div>
+
+            {/* Glitch effect overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform skew-x-12 -translate-x-full animate-pulse"></div>
           </div>
         </div>
       ))}
@@ -73,28 +114,42 @@ const BannerCarousel = () => {
       {/* Navigation Buttons */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 rounded-full transition-all"
+        className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/30 hover:bg-purple-600/50 text-white rounded-full transition-all duration-300 flex items-center justify-center backdrop-blur-sm border border-white/20"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
+      
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 rounded-full transition-all"
+        className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/30 hover:bg-purple-600/50 text-white rounded-full transition-all duration-300 flex items-center justify-center backdrop-blur-sm border border-white/20"
       >
         <ChevronRight className="w-6 h-6" />
       </button>
 
       {/* Dots Indicator */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-        {bannerSlides.map((_, index) => (
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3">
+        {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all ${
-              index === currentSlide ? 'bg-white' : 'bg-white/50'
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentSlide 
+                ? 'bg-white w-8' 
+                : 'bg-white/40 hover:bg-white/60'
             }`}
           />
         ))}
+      </div>
+
+      {/* Progress bar */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-black/20">
+        <div 
+          className="h-full bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-4000 ease-linear"
+          style={{ 
+            width: isPlaying ? '100%' : '0%',
+            transition: isPlaying ? 'width 4s linear' : 'none'
+          }}
+        />
       </div>
     </div>
   );

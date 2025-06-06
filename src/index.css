@@ -3,67 +3,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Tabacaria Verde Design System */
+/* Grunge Street Design System */
 @layer base {
   :root {
-    --background: 45 30% 96%; /* Light beige background */
-    --foreground: 240 10% 9%;
+    --background: 45 15% 8%; /* Dark grunge background */
+    --foreground: 0 0% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 9%;
+    --card: 240 15% 12%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 9%;
+    --popover: 240 15% 12%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 120 60% 50%; /* Verde primário */
+    --primary: 270 80% 60%; /* Vibrant purple */
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 270 50% 60%; /* Roxo secundário */
+    --secondary: 120 40% 25%; /* Dark green */
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 45 20% 92%;
-    --muted-foreground: 240 5% 45%;
+    --muted: 240 10% 15%;
+    --muted-foreground: 240 5% 65%;
 
-    --accent: 45 30% 88%;
-    --accent-foreground: 240 10% 9%;
+    --accent: 280 60% 50%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 45 20% 85%;
-    --input: 45 20% 85%;
-    --ring: 120 60% 50%;
+    --border: 240 20% 20%;
+    --input: 240 20% 20%;
+    --ring: 270 80% 60%;
 
     --radius: 0.75rem;
 
-    /* Custom colors for e-commerce */
-    --green-primary: 120 60% 50%;
-    --green-hover: 120 55% 45%;
-    --purple-secondary: 270 50% 60%;
-    --beige-bg: 45 30% 96%;
-    --beige-light: 45 40% 98%;
+    /* Custom grunge colors */
+    --purple-primary: 270 80% 60%;
+    --purple-dark: 270 70% 40%;
+    --purple-light: 280 60% 70%;
+    --green-dark: 120 40% 25%;
+    --green-accent: 120 50% 35%;
+    --beige-dark: 45 25% 15%;
+    --beige-light: 45 30% 85%;
   }
 
   .dark {
-    --background: 240 10% 9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 12%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 12%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 120 60% 50%;
-    --primary-foreground: 240 10% 9%;
-    --secondary: 270 50% 60%;
+    --background: 45 15% 8%;
+    --foreground: 0 0% 95%;
+    --card: 240 15% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 240 15% 12%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 270 80% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 120 40% 25%;
     --secondary-foreground: 0 0% 98%;
     --muted: 240 10% 15%;
     --muted-foreground: 240 5% 65%;
-    --accent: 240 10% 15%;
+    --accent: 280 60% 50%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
-    --border: 240 10% 15%;
-    --input: 240 10% 15%;
-    --ring: 120 60% 50%;
+    --border: 240 20% 20%;
+    --input: 240 20% 20%;
+    --ring: 270 80% 60%;
   }
 }
 
@@ -73,59 +75,208 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-color: hsl(var(--beige-bg));
+    background: linear-gradient(135deg, hsl(45, 15%, 8%) 0%, hsl(240, 15%, 12%) 100%);
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 }
 
 @layer components {
-  .green-gradient {
-    background: linear-gradient(135deg, hsl(var(--green-primary)) 0%, #22c55e 100%);
-  }
-  
+  /* Grunge Gradients */
   .purple-gradient {
-    background: linear-gradient(135deg, hsl(var(--purple-secondary)) 0%, #a855f7 100%);
+    background: linear-gradient(135deg, hsl(270, 80%, 60%) 0%, hsl(280, 60%, 50%) 50%, hsl(270, 70%, 40%) 100%);
   }
   
-  .product-card {
-    @apply bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-border/50;
+  .purple-gradient-reverse {
+    background: linear-gradient(315deg, hsl(270, 80%, 60%) 0%, hsl(280, 60%, 50%) 50%, hsl(270, 70%, 40%) 100%);
   }
   
-  .btn-primary {
-    @apply bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md;
+  .green-gradient {
+    background: linear-gradient(135deg, hsl(120, 50%, 35%) 0%, hsl(120, 40%, 25%) 100%);
   }
   
-  .btn-secondary {
-    @apply bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md;
+  .dark-gradient {
+    background: linear-gradient(135deg, hsl(240, 15%, 12%) 0%, hsl(45, 15%, 8%) 100%);
+  }
+
+  .neon-gradient {
+    background: linear-gradient(45deg, #8b5cf6, #a855f7, #9333ea, #7c3aed);
+    background-size: 400% 400%;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  /* Grunge Cards */
+  .grunge-card {
+    @apply bg-card/80 backdrop-blur-sm rounded-xl border border-border/50 shadow-2xl;
+    background: linear-gradient(135deg, hsl(240, 15%, 12%) 0%, hsl(240, 20%, 8%) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .grunge-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(270, 80%, 60%), transparent);
+  }
+
+  .grunge-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  /* Grunge Buttons */
+  .btn-grunge {
+    @apply px-6 py-3 rounded-lg font-bold text-white relative overflow-hidden transition-all duration-300 transform;
+    background: linear-gradient(135deg, hsl(270, 80%, 60%) 0%, hsl(280, 60%, 50%) 100%);
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+    border: 1px solid hsl(270, 80%, 70%);
+  }
+  
+  .btn-grunge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .btn-grunge:hover::before {
+    left: 100%;
+  }
+  
+  .btn-grunge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.6);
+  }
+
+  .btn-grunge-secondary {
+    @apply px-6 py-3 rounded-lg font-bold text-white relative overflow-hidden transition-all duration-300 transform;
+    background: linear-gradient(135deg, hsl(120, 50%, 35%) 0%, hsl(120, 40%, 25%) 100%);
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+    border: 1px solid hsl(120, 50%, 40%);
+  }
+
+  /* Neon text effects */
+  .neon-text {
+    color: hsl(270, 80%, 60%);
+    text-shadow: 
+      0 0 5px hsl(270, 80%, 60%),
+      0 0 10px hsl(270, 80%, 60%),
+      0 0 15px hsl(270, 80%, 60%);
+  }
+
+  .neon-text-green {
+    color: hsl(120, 50%, 35%);
+    text-shadow: 
+      0 0 5px hsl(120, 50%, 35%),
+      0 0 10px hsl(120, 50%, 35%);
+  }
+
+  /* Grunge textures */
+  .grunge-texture {
+    position: relative;
+  }
+  
+  .grunge-texture::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.1) 0%, transparent 50%);
+    pointer-events: none;
   }
 }
 
 /* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  50% {
+    background-position: 100% 50%;
   }
 }
 
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+  50% {
+    transform: translateY(-20px);
   }
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
+@keyframes pulse-neon {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px hsl(270, 80%, 60%),
+      0 0 10px hsl(270, 80%, 60%),
+      0 0 15px hsl(270, 80%, 60%);
+  }
+  50% {
+    text-shadow: 
+      0 0 10px hsl(270, 80%, 60%),
+      0 0 20px hsl(270, 80%, 60%),
+      0 0 30px hsl(270, 80%, 60%);
+  }
 }
 
-.animate-slide-in-right {
-  animation: slideInRight 0.4s ease-out;
+@keyframes glitch {
+  0%, 100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-neon {
+  animation: pulse-neon 2s ease-in-out infinite;
+}
+
+.animate-glitch:hover {
+  animation: glitch 0.3s ease-in-out;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(240, 15%, 12%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, hsl(270, 80%, 60%), hsl(280, 60%, 50%));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, hsl(280, 60%, 50%), hsl(270, 80%, 60%));
 }
