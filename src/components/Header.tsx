@@ -41,29 +41,29 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-green-600 to-green-700 text-white py-2 text-center text-sm font-bold text-street">
+      <div className="bg-gradient-to-r from-purple-400 to-purple-500 text-white py-2 text-center text-sm font-bold mj-text">
         <p className="flex items-center justify-center space-x-2">
           <Leaf className="w-4 h-4" />
-          <span>🌿 Frete grátis para pedidos acima de R$ 200! Vibe garantida 🔥</span>
+          <span>🌿 Frete grátis para pedidos acima de R$ 200! No estilo, com qualidade 🌿</span>
           <Leaf className="w-4 h-4" />
         </p>
       </div>
 
       {/* Main Header */}
-      <div className="header-texture shadow-lg border-b border-purple-800/30">
-        <div className="container mx-auto px-4 py-4">
+      <div className="mj-header shadow-lg">
+        <div className="container mx-auto px-4 py-4 relative z-10">
           <div className="flex items-center justify-between gap-4">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3 group">
-              <div className="w-12 h-12 purple-street-gradient rounded-xl flex items-center justify-center text-white font-bold relative overflow-hidden transition-all duration-300 group-hover:scale-105">
-                <span className="title-street text-lg">TV</span>
+              <div className="w-12 h-12 mj-purple-vibrant-gradient rounded-xl flex items-center justify-center text-white font-bold relative overflow-hidden transition-all duration-300 group-hover:scale-105">
+                <span className="mj-title text-lg">MJ</span>
                 <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
               </div>
               <div className="hidden sm:block">
-                <span className="title-street text-xl text-white font-black">
-                  Tabacaria Verde
+                <span className="mj-title text-xl text-white font-black">
+                  MJ HeadShop
                 </span>
-                <p className="text-xs text-purple-200 text-street">Da quebrada com amor 🌿</p>
+                <p className="text-xs text-purple-200 mj-text">No estilo, com qualidade 🌿</p>
               </div>
             </Link>
 
@@ -72,15 +72,15 @@ const Header = () => {
               <div className="relative group">
                 <Input
                   type="text"
-                  placeholder="Buscar na quebrada..."
+                  placeholder="Buscar produtos..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pr-12 bg-white/90 border-white/30 text-gray-800 placeholder-gray-500 focus:bg-white focus:border-purple-400 transition-all duration-300 text-street"
+                  className="pr-12 bg-white border-white/30 text-gray-800 placeholder-gray-500 focus:bg-white focus:border-purple-400 transition-all duration-300 mj-text"
                 />
                 <Button 
                   type="submit" 
                   size="sm" 
-                  className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-10 p-0 btn-street"
+                  className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-10 p-0 btn-mj-primary"
                 >
                   <Search className="w-4 h-4" />
                 </Button>
@@ -98,8 +98,8 @@ const Header = () => {
                       alt={state.user?.name}
                       className="w-8 h-8 rounded-full border-2 border-white/30"
                     />
-                    <span className="text-sm text-white font-semibold text-street">{state.user?.name}</span>
-                    <Button variant="ghost" size="sm" onClick={handleLogout} className="text-white hover:bg-white/20 text-street font-semibold">
+                    <span className="text-sm text-white font-semibold mj-text">{state.user?.name}</span>
+                    <Button variant="ghost" size="sm" onClick={handleLogout} className="text-white hover:bg-white/20 mj-text font-semibold">
                       Sair
                     </Button>
                   </div>
@@ -108,7 +108,7 @@ const Header = () => {
                     variant="ghost" 
                     size="sm" 
                     onClick={handleLogin} 
-                    className="flex items-center space-x-2 text-white hover:bg-white/20 font-semibold text-street"
+                    className="flex items-center space-x-2 bg-white text-purple-600 hover:bg-white/90 font-semibold mj-text px-4 py-2 rounded-lg"
                   >
                     <User className="w-4 h-4" />
                     <span>Entrar</span>
@@ -151,15 +151,15 @@ const Header = () => {
             <div className="relative">
               <Input
                 type="text"
-                placeholder="Buscar na quebrada..."
+                placeholder="Buscar produtos..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pr-12 bg-white/90 border-white/30 text-gray-800 placeholder-gray-500 text-street"
+                className="pr-12 bg-white border-white/30 text-gray-800 placeholder-gray-500 mj-text"
               />
               <Button 
                 type="submit" 
                 size="sm" 
-                className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-10 p-0 btn-street"
+                className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-10 p-0 btn-mj-primary"
               >
                 <Search className="w-4 h-4" />
               </Button>
@@ -167,7 +167,7 @@ const Header = () => {
           </form>
 
           {/* Mobile User Actions */}
-          <div className={`mt-4 md:hidden ${state.isAuthenticated ? 'block' : 'hidden'}`}>
+          <div className={`mt-4 md:hidden ${!state.isAuthenticated ? 'block' : 'hidden'}`}>
             {state.isAuthenticated ? (
               <div className="flex items-center justify-between bg-white/10 rounded-lg p-3 backdrop-blur-sm">
                 <div className="flex items-center space-x-3">
@@ -176,9 +176,9 @@ const Header = () => {
                     alt={state.user?.name}
                     className="w-8 h-8 rounded-full border-2 border-white/30"
                   />
-                  <span className="text-sm text-white font-semibold text-street">{state.user?.name}</span>
+                  <span className="text-sm text-white font-semibold mj-text">{state.user?.name}</span>
                 </div>
-                <Button variant="ghost" size="sm" onClick={handleLogout} className="text-white hover:bg-white/20 text-street font-semibold">
+                <Button variant="ghost" size="sm" onClick={handleLogout} className="text-white hover:bg-white/20 mj-text font-semibold">
                   Sair
                 </Button>
               </div>
@@ -187,7 +187,7 @@ const Header = () => {
                 variant="ghost" 
                 size="sm" 
                 onClick={handleLogin} 
-                className="w-full justify-center text-white hover:bg-white/20 font-semibold text-street"
+                className="w-full justify-center bg-white text-purple-600 hover:bg-white/90 font-semibold mj-text"
               >
                 <User className="w-4 h-4 mr-2" />
                 Entrar
@@ -204,7 +204,7 @@ const Header = () => {
                 <Link
                   key={category.id}
                   to={`/categoria/${category.slug}`}
-                  className="py-3 md:py-2 text-white hover:text-green-300 transition-colors font-semibold text-street relative group"
+                  className="py-3 md:py-2 text-white hover:text-green-300 transition-colors font-semibold mj-text relative group"
                   onClick={() => setIsMenuOpen(false)}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
@@ -214,10 +214,10 @@ const Header = () => {
               ))}
               <Link
                 to="/promocoes"
-                className="py-3 md:py-2 text-green-300 hover:text-green-200 transition-colors font-bold text-street relative group animate-pulse"
+                className="py-3 md:py-2 text-green-300 hover:text-green-200 transition-colors font-bold mj-text relative group animate-pulse"
                 onClick={() => setIsMenuOpen(false)}
               >
-                🔥 Promoções da Quebrada
+                🔥 Ofertas Especiais
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-400 transition-all duration-300 group-hover:w-full"></span>
               </Link>
             </div>

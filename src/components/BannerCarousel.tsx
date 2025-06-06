@@ -11,18 +11,18 @@ const BannerCarousel = () => {
   const slides = [
     {
       id: 1,
-      title: "🔥 QUEIMA DE ESTOQUE",
-      subtitle: "Até 70% OFF em toda linha de bongs",
-      description: "Aproveite agora! Produtos de qualidade com preços de quebrada",
+      title: "🔥 OFERTAS ESPECIAIS",
+      subtitle: "Até 70% OFF em produtos selecionados",
+      description: "Aproveite agora! Produtos premium com preços imperdíveis",
       cta: "CONFERIR AGORA",
       link: "/categoria/bongs",
       gradient: "from-purple-600 via-purple-500 to-pink-500"
     },
     {
       id: 2,
-      title: "⚡ LANÇAMENTO EXCLUSIVO",
-      subtitle: "Nova linha de pipes artesanais",
-      description: "Peças únicas feitas por artistas da cena underground",
+      title: "⚡ LANÇAMENTOS",
+      subtitle: "Nova coleção premium disponível",
+      description: "Produtos exclusivos com qualidade garantida",
       cta: "VER COLEÇÃO",
       link: "/categoria/pipes",
       gradient: "from-purple-700 via-indigo-600 to-purple-800"
@@ -30,8 +30,8 @@ const BannerCarousel = () => {
     {
       id: 3,
       title: "🌿 FRETE GRÁTIS",
-      subtitle: "Em compras acima de R$ 150",
-      description: "Receba em casa sem pagar nada a mais, direto da quebrada",
+      subtitle: "Em compras acima de R$ 200",
+      description: "Receba em casa sem pagar nada a mais, com segurança total",
       cta: "APROVEITAR",
       link: "/",
       gradient: "from-green-600 via-purple-600 to-purple-700"
@@ -58,7 +58,7 @@ const BannerCarousel = () => {
 
   return (
     <div 
-      className="relative h-80 md:h-96 lg:h-[28rem] overflow-hidden rounded-2xl urban-card shadow-2xl"
+      className="relative h-80 md:h-96 lg:h-[28rem] overflow-hidden rounded-2xl mj-card shadow-2xl"
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
     >
@@ -70,14 +70,14 @@ const BannerCarousel = () => {
           }`}
         >
           <div className={`relative w-full h-full bg-gradient-to-br ${slide.gradient}`}>
-            {/* Urban texture overlay */}
-            <div className="absolute inset-0 header-texture opacity-80"></div>
+            {/* Professional texture overlay */}
+            <div className="absolute inset-0 bg-black/10"></div>
             
             {/* Animated background elements */}
             <div className="absolute inset-0 overflow-hidden">
-              <div className="absolute top-10 left-10 w-32 h-32 bg-white/5 rounded-full animate-float-urban" style={{ animationDelay: '0s' }}></div>
-              <div className="absolute top-32 right-16 w-24 h-24 bg-white/5 rounded-full animate-float-urban" style={{ animationDelay: '2s' }}></div>
-              <div className="absolute bottom-20 left-1/3 w-20 h-20 bg-white/5 rounded-full animate-float-urban" style={{ animationDelay: '4s' }}></div>
+              <div className="absolute top-10 left-10 w-32 h-32 bg-white/5 rounded-full animate-mj-float" style={{ animationDelay: '0s' }}></div>
+              <div className="absolute top-32 right-16 w-24 h-24 bg-white/5 rounded-full animate-mj-float" style={{ animationDelay: '2s' }}></div>
+              <div className="absolute bottom-20 left-1/3 w-20 h-20 bg-white/5 rounded-full animate-mj-float" style={{ animationDelay: '4s' }}></div>
             </div>
 
             <div className="relative z-10 flex items-center justify-center h-full px-8">
@@ -88,35 +88,35 @@ const BannerCarousel = () => {
                   <Zap className="w-6 h-6 text-yellow-400 animate-pulse" style={{ animationDelay: '1s' }} />
                 </div>
 
-                <h1 className="text-4xl md:text-5xl lg:text-7xl font-black animate-pulse-urban tracking-wider title-street">
+                <h1 className="text-4xl md:text-5xl lg:text-7xl font-black mj-glow-white tracking-wider mj-title">
                   {slide.title}
                 </h1>
                 
-                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold opacity-90 text-street">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold opacity-90 mj-text">
                   {slide.subtitle}
                 </h2>
                 
-                <p className="text-lg md:text-xl opacity-80 max-w-2xl mx-auto font-medium text-body-street">
+                <p className="text-lg md:text-xl opacity-80 max-w-2xl mx-auto font-medium mj-body-text">
                   {slide.description}
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
                   <Link to={slide.link}>
-                    <Button className="btn-street text-lg md:text-xl px-8 py-4 transform hover:scale-105 transition-all duration-300 shadow-2xl">
+                    <Button className="btn-mj-secondary bg-white text-purple-600 text-lg md:text-xl px-8 py-4 transform hover:scale-105 transition-all duration-300 shadow-2xl">
                       {slide.cta}
                     </Button>
                   </Link>
                   <Link to="/promocoes">
-                    <Button className="btn-street-secondary text-lg px-6 py-4 transform hover:scale-105 transition-all duration-300 shadow-xl">
-                      🌿 VER PROMOÇÕES
+                    <Button className="btn-mj-primary text-lg px-6 py-4 transform hover:scale-105 transition-all duration-300 shadow-xl">
+                      🌿 VER OFERTAS
                     </Button>
                   </Link>
                 </div>
               </div>
             </div>
 
-            {/* Urban shimmer effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform skew-x-12 -translate-x-full animate-shimmer"></div>
+            {/* Professional shimmer effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform skew-x-12 -translate-x-full animate-mj-shimmer"></div>
           </div>
         </div>
       ))}
