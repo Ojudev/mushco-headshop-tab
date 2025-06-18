@@ -25,13 +25,7 @@ const Header = () => {
   };
 
   const handleLogin = () => {
-    const mockUser = {
-      id: '1',
-      name: 'João Silva',
-      email: 'joao@example.com',
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face'
-    };
-    dispatch({ type: 'LOGIN', payload: mockUser });
+    navigate('/auth');
   };
 
   const handleLogout = () => {
@@ -87,34 +81,32 @@ const Header = () => {
               </div>
             </form>
 
-            {/* User Actions */}
-            <div className="flex items-center space-x-3">
+            {/* Desktop User Actions */}
+            <div className="hidden md:flex items-center space-x-3">
               {/* User Menu */}
-              <div className="hidden md:flex items-center space-x-3">
-                {state.isAuthenticated ? (
-                  <div className="flex items-center space-x-3 bg-white/10 rounded-lg px-3 py-2 backdrop-blur-sm">
-                    <img 
-                      src={state.user?.avatar} 
-                      alt={state.user?.name}
-                      className="w-8 h-8 rounded-full border-2 border-white/30"
-                    />
-                    <span className="text-sm text-white font-semibold mj-text">{state.user?.name}</span>
-                    <Button variant="ghost" size="sm" onClick={handleLogout} className="text-white hover:bg-white/20 mj-text font-semibold">
-                      Sair
-                    </Button>
-                  </div>
-                ) : (
-                  <Button 
-                    variant="ghost" 
-                    size="sm" 
-                    onClick={handleLogin} 
-                    className="flex items-center space-x-2 bg-white text-purple-600 hover:bg-white/90 font-semibold mj-text px-4 py-2 rounded-lg"
-                  >
-                    <User className="w-4 h-4" />
-                    <span>Entrar</span>
+              {state.isAuthenticated ? (
+                <div className="flex items-center space-x-3 bg-white/10 rounded-lg px-3 py-2 backdrop-blur-sm">
+                  <img 
+                    src={state.user?.avatar} 
+                    alt={state.user?.name}
+                    className="w-8 h-8 rounded-full border-2 border-white/30"
+                  />
+                  <span className="text-sm text-white font-semibold mj-text">{state.user?.name}</span>
+                  <Button variant="ghost" size="sm" onClick={handleLogout} className="text-white hover:bg-white/20 mj-text font-semibold">
+                    Sair
                   </Button>
-                )}
-              </div>
+                </div>
+              ) : (
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={handleLogin} 
+                  className="flex items-center space-x-2 bg-white text-purple-600 hover:bg-white/90 font-semibold mj-text px-4 py-2 rounded-lg"
+                >
+                  <User className="w-4 h-4" />
+                  <span>Entrar</span>
+                </Button>
+              )}
 
               {/* Favorites */}
               <Link to="/favoritos" className="relative p-3 hover:bg-white/20 rounded-lg transition-all duration-300 group">
@@ -135,11 +127,50 @@ const Header = () => {
                   </span>
                 )}
               </Link>
+            </div>
+
+            {/* Mobile Actions */}
+            <div className="flex md:hidden items-center space-x-3">
+              {/* Mobile Auth/User Actions - Show different buttons based on auth state */}
+              {state.isAuthenticated ? (
+                <>
+                  {/* Favorites */}
+                  <Link to="/favoritos" className="relative p-3 hover:bg-white/20 rounded-lg transition-all duration-300 group">
+                    <Heart className="w-5 h-5 text-white group-hover:scale-110 transition-transform duration-300" />
+                    {favoritesCount > 0 && (
+                      <span className="absolute -top-1 -right-1 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold animate-pulse">
+                        {favoritesCount}
+                      </span>
+                    )}
+                  </Link>
+
+                  {/* Cart */}
+                  <Link to="/carrinho" className="relative p-3 hover:bg-white/20 rounded-lg transition-all duration-300 group">
+                    <ShoppingCart className="w-5 h-5 text-white group-hover:scale-110 transition-transform duration-300" />
+                    {cartItemsCount > 0 && (
+                      <span className="absolute -top-1 -right-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold animate-pulse">
+                        {cartItemsCount}
+                      </span>
+                    )}
+                  </Link>
+                </>
+              ) : (
+                /* Show Login Button when not authenticated */
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={handleLogin} 
+                  className="flex items-center space-x-2 bg-white text-purple-600 hover:bg-white/90 font-semibold mj-text px-3 py-2 rounded-lg"
+                >
+                  <User className="w-4 h-4" />
+                  <span>Entrar</span>
+                </Button>
+              )}
 
               {/* Mobile Menu Toggle */}
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="md:hidden p-3 hover:bg-white/20 rounded-lg transition-all duration-300"
+                className="p-3 hover:bg-white/20 rounded-lg transition-all duration-300"
               >
                 {isMenuOpen ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5 text-white" />}
               </button>
@@ -166,9 +197,9 @@ const Header = () => {
             </div>
           </form>
 
-          {/* Mobile User Actions */}
-          <div className={`mt-4 md:hidden ${!state.isAuthenticated ? 'block' : 'hidden'}`}>
-            {state.isAuthenticated ? (
+          {/* Mobile User Info - Only show when authenticated */}
+          {state.isAuthenticated && (
+            <div className="mt-4 md:hidden">
               <div className="flex items-center justify-between bg-white/10 rounded-lg p-3 backdrop-blur-sm">
                 <div className="flex items-center space-x-3">
                   <img 
@@ -182,18 +213,8 @@ const Header = () => {
                   Sair
                 </Button>
               </div>
-            ) : (
-              <Button 
-                variant="ghost" 
-                size="sm" 
-                onClick={handleLogin} 
-                className="w-full justify-center bg-white text-purple-600 hover:bg-white/90 font-semibold mj-text"
-              >
-                <User className="w-4 h-4 mr-2" />
-                Entrar
-              </Button>
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
         {/* Navigation Menu */}

@@ -12,6 +12,7 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Favorites from "./pages/Favorites";
 import OrderConfirmation from "./pages/OrderConfirmation";
+import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/favoritos" element={<Favorites />} />
             <Route path="/pedido-confirmado" element={<OrderConfirmation />} />
+            <Route path="/auth" element={<Auth />} />
             <Route path="/mais-vendidos" element={<Category />} />
             <Route path="/lancamentos" element={<Category />} />
             <Route path="/promocoes" element={<Category />} />
