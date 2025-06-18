@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Truck, Shield, Headphones, Zap, Flame, Sparkles, Heart, ShoppingCart, Leaf } from 'lucide-react';
@@ -43,11 +42,9 @@ const Index = () => {
                 className="group text-center space-y-4 p-6 mj-card hover:scale-105 transition-all duration-300 animate-slide-in-right"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="aspect-square overflow-hidden rounded-xl bg-gradient-to-br from-purple-50 to-gray-50 border border-purple-100 relative">
+                <div className="aspect-square overflow-hidden rounded-xl bg-gradient-to-br from-purple-100 to-purple-200 border border-purple-200 relative">
                   <div className="w-full h-full flex items-center justify-center">
-                    <div className="w-16 h-16 mj-purple-vibrant-gradient rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <Leaf className="w-8 h-8 text-white" />
-                    </div>
+                    <Leaf className="w-12 h-12 text-purple-600" />
                   </div>
                 </div>
                 <h3 className="font-bold text-lg group-hover:text-purple-700 transition-colors mj-glow-purple mj-text">
@@ -187,13 +184,13 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Vantagens da MJ */}
+        {/* Vantagens da Mush Co. */}
         <section className="container mx-auto px-4 py-20">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-4xl md:text-5xl font-black mb-6 mj-glow-purple animate-mj-glow-pulse mj-title">
-              🚀 VANTAGENS DA MJ
+              🚀 VANTAGENS DA MUSH CO.
             </h2>
-            <p className="text-gray-700 text-xl mj-body-text">Por que escolher a MJ HeadShop</p>
+            <p className="text-gray-700 text-xl mj-body-text">Por que escolher a Mush Co.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -236,7 +233,7 @@ const Index = () => {
               <h2 className="text-4xl md:text-5xl font-black mb-6 mj-glow-purple animate-mj-glow-pulse mj-title">
                 🗣️ O QUE DIZEM NOSSOS CLIENTES
               </h2>
-              <p className="text-gray-700 text-xl mj-body-text">Avaliações reais de quem confia na MJ</p>
+              <p className="text-gray-700 text-xl mj-body-text">Avaliações reais de quem confia na Mush Co.</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -248,7 +245,7 @@ const Index = () => {
                     ))}
                   </div>
                   <p className="text-gray-700 mb-6 text-lg leading-relaxed mj-body-text">
-                    "Produtos de excelente qualidade e entrega super rápida. A MJ HeadShop é confiável e tem os melhores preços! 🔥"
+                    "Produtos de excelente qualidade e entrega super rápida. A Mush Co. é confiável e tem os melhores preços! 🔥"
                   </p>
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 mj-purple-vibrant-gradient rounded-full flex items-center justify-center shadow-lg">

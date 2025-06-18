@@ -41,7 +41,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-purple-400 to-purple-500 text-white py-2 text-center text-sm font-bold mj-text">
+      <div className="bg-gradient-to-r from-purple-600 to-purple-700 text-white py-3 text-center text-sm font-bold mj-text shadow-sm">
         <p className="flex items-center justify-center space-x-2">
           <Leaf className="w-4 h-4" />
           <span>🌿 Frete grátis para pedidos acima de R$ 200! No estilo, com qualidade 🌿</span>
@@ -56,12 +56,12 @@ const Header = () => {
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3 group">
               <div className="w-12 h-12 mj-purple-vibrant-gradient rounded-xl flex items-center justify-center text-white font-bold relative overflow-hidden transition-all duration-300 group-hover:scale-105">
-                <span className="mj-title text-lg">MJ</span>
+                <span className="mj-title text-lg">MC</span>
                 <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
               </div>
               <div className="hidden sm:block">
                 <span className="mj-title text-xl text-white font-black">
-                  MJ HeadShop
+                  Mush Co.
                 </span>
                 <p className="text-xs text-purple-200 mj-text">No estilo, com qualidade 🌿</p>
               </div>

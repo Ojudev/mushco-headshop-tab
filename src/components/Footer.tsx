@@ -11,22 +11,22 @@ const Footer = () => {
           {/* Logo e Descrição */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center text-white font-bold">
-                TV
+              <div className="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center text-white font-bold">
+                MC
               </div>
-              <span className="text-xl font-bold text-green-400">
-                Tabacaria Verde
+              <span className="text-xl font-bold text-purple-400">
+                Mush Co.
               </span>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
-              Sua tabacaria de confiança com os melhores produtos e preços do mercado. 
+              Sua loja de confiança com os melhores produtos e preços do mercado. 
               Qualidade garantida e entrega rápida em todo o Brasil.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
+              <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
                 <Heart className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
+              <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
                 <Mail className="w-5 h-5" />
               </a>
             </div>
@@ -34,7 +34,7 @@ const Footer = () => {
 
           {/* Links Rápidos */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-green-400">Links Rápidos</h3>
+            <h3 className="text-lg font-semibold text-purple-400">Links Rápidos</h3>
             <div className="space-y-2">
               <Link to="/sobre" className="block text-gray-300 hover:text-white transition-colors text-sm">
                 Sobre Nós
@@ -53,7 +53,7 @@ const Footer = () => {
 
           {/* Categorias */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-green-400">Categorias</h3>
+            <h3 className="text-lg font-semibold text-purple-400">Categorias</h3>
             <div className="space-y-2">
               <Link to="/categoria/bongs" className="block text-gray-300 hover:text-white transition-colors text-sm">
                 Bongs
@@ -72,18 +72,18 @@ const Footer = () => {
 
           {/* Contato */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-green-400">Contato</h3>
+            <h3 className="text-lg font-semibold text-purple-400">Contato</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-2 text-sm text-gray-300">
-                <Phone className="w-4 h-4 text-green-400" />
+                <Phone className="w-4 h-4 text-purple-400" />
                 <span>(11) 99999-9999</span>
               </div>
               <div className="flex items-center space-x-2 text-sm text-gray-300">
-                <Mail className="w-4 h-4 text-green-400" />
-                <span>contato@tabacariaverve.com</span>
+                <Mail className="w-4 h-4 text-purple-400" />
+                <span>contato@mushco.com</span>
               </div>
               <div className="flex items-start space-x-2 text-sm text-gray-300">
-                <MapPin className="w-4 h-4 text-green-400 mt-0.5" />
+                <MapPin className="w-4 h-4 text-purple-400 mt-0.5" />
                 <span>São Paulo, SP<br />Brasil</span>
               </div>
             </div>
@@ -94,7 +94,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm text-gray-400">
-              © 2024 Tabacaria Verde. Todos os direitos reservados.
+              © 2024 Mush Co. Todos os direitos reservados.
             </div>
             <div className="flex space-x-6 text-sm">
               <Link to="/privacidade" className="text-gray-400 hover:text-white transition-colors">
