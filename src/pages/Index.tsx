@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Truck, Shield, Headphones, Zap, Flame, Sparkles, Heart, ShoppingCart, Leaf } from 'lucide-react';
@@ -27,7 +28,7 @@ const Index = () => {
         <section className="container mx-auto px-4 py-16 relative">
           <div className="text-center mb-12 animate-fade-in-up">
             <h2 className="text-4xl md:text-5xl font-black mb-6 mj-glow-purple animate-mj-glow-pulse mj-title">
-              🌿 NOSSAS CATEGORIAS
+              NOSSAS CATEGORIAS
             </h2>
             <p className="text-gray-700 max-w-3xl mx-auto text-lg md:text-xl mj-body-text">
               Explore nossa seleção de produtos premium
@@ -97,26 +98,26 @@ const Index = () => {
             <div className="animate-fade-in-up">
               <Sparkles className="w-16 h-16 text-yellow-400 mx-auto mb-6 animate-pulse" />
               <h2 className="text-5xl md:text-6xl font-black text-white mb-6 mj-glow-white mj-title">
-                OFERTAS ESPECIAIS! 🔥
+                OFERTAS ESPECIAIS
               </h2>
               <p className="text-2xl md:text-3xl mb-4 text-green-300 font-bold mj-text">
-                🎯 DESCONTOS IMPERDÍVEIS
+                DESCONTOS IMPERDÍVEIS
               </p>
               <p className="text-xl mb-4 text-white mj-body-text">
                 Produtos selecionados com preços especiais!
               </p>
               <p className="text-lg mb-8 text-yellow-300 font-bold animate-pulse mj-text">
-                ⏰ PROMOÇÕES POR TEMPO LIMITADO
+                PROMOÇÕES POR TEMPO LIMITADO
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
                 <Link to="/categoria/sedas">
                   <Button className="btn-mj-secondary bg-white text-purple-600 text-xl px-12 py-6 transform hover:scale-110 transition-all duration-300 shadow-2xl">
-                    🔥 VER OFERTAS
+                    VER OFERTAS
                   </Button>
                 </Link>
                 <Link to="/promocoes">
                   <Button className="btn-mj-primary text-xl px-8 py-6 transform hover:scale-110 transition-all duration-300 shadow-2xl">
-                    🌿 TODOS OS PRODUTOS
+                    TODOS OS PRODUTOS
                   </Button>
                 </Link>
               </div>
@@ -188,7 +189,7 @@ const Index = () => {
         <section className="container mx-auto px-4 py-20">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-4xl md:text-5xl font-black mb-6 mj-glow-purple animate-mj-glow-pulse mj-title">
-              🚀 VANTAGENS DA MUSH CO.
+              VANTAGENS DA MUSH CO.
             </h2>
             <p className="text-gray-700 text-xl mj-body-text">Por que escolher a Mush Co.</p>
           </div>
@@ -231,7 +232,7 @@ const Index = () => {
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-16 animate-fade-in-up">
               <h2 className="text-4xl md:text-5xl font-black mb-6 mj-glow-purple animate-mj-glow-pulse mj-title">
-                🗣️ O QUE DIZEM NOSSOS CLIENTES
+                O QUE DIZEM NOSSOS CLIENTES
               </h2>
               <p className="text-gray-700 text-xl mj-body-text">Avaliações reais de quem confia na Mush Co.</p>
             </div>
@@ -245,7 +246,7 @@ const Index = () => {
                     ))}
                   </div>
                   <p className="text-gray-700 mb-6 text-lg leading-relaxed mj-body-text">
-                    "Produtos de excelente qualidade e entrega super rápida. A Mush Co. é confiável e tem os melhores preços! 🔥"
+                    "Produtos de excelente qualidade e entrega super rápida. A Mush Co. é confiável e tem os melhores preços!"
                   </p>
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 mj-purple-vibrant-gradient rounded-full flex items-center justify-center shadow-lg">

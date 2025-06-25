@@ -13,6 +13,10 @@ import Checkout from "./pages/Checkout";
 import Favorites from "./pages/Favorites";
 import OrderConfirmation from "./pages/OrderConfirmation";
 import Auth from "./pages/Auth";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import FAQ from "./pages/FAQ";
+import Returns from "./pages/Returns";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,6 +37,10 @@ const App = () => (
             <Route path="/favoritos" element={<Favorites />} />
             <Route path="/pedido-confirmado" element={<OrderConfirmation />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/sobre" element={<About />} />
+            <Route path="/contato" element={<Contact />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/trocas-devolucoes" element={<Returns />} />
             <Route path="/mais-vendidos" element={<Category />} />
             <Route path="/lancamentos" element={<Category />} />
             <Route path="/promocoes" element={<Category />} />

@@ -103,14 +103,14 @@ const OrderConfirmation = () => {
             </Button>
           </div>
 
-          {/* Promotional Banner */}
-          <div className="bg-gradient-to-r from-green-500 to-purple-600 text-white rounded-xl p-6">
-            <h3 className="text-xl font-bold mb-2">🎉 Obrigado pela preferência!</h3>
-            <p className="mb-4">
+          {/* Promotional Banner - Fixed contrast */}
+          <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white rounded-xl p-6">
+            <h3 className="text-xl font-bold mb-2">Obrigado pela preferência!</h3>
+            <p className="mb-4 text-purple-100">
               Que tal compartilhar sua experiência com seus amigos? 
               Eles também merecem produtos de qualidade!
             </p>
-            <Button className="bg-white text-green-600 hover:bg-gray-100">
+            <Button className="bg-white text-purple-600 hover:bg-gray-100 font-medium">
               Compartilhar
             </Button>
           </div>

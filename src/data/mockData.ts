@@ -6,42 +6,42 @@ export const categories: Category[] = [
     id: '1',
     name: 'Bongs',
     slug: 'bongs',
-    image: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400',
+    image: '',
     description: 'Bongs de vidro e acrílico de alta qualidade'
   },
   {
     id: '2',
     name: 'Pipes',
     slug: 'pipes',
-    image: 'https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=400',
+    image: '',
     description: 'Pipes artesanais e importados'
   },
   {
     id: '3',
     name: 'Sedas',
     slug: 'sedas',
-    image: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400',
+    image: '',
     description: 'Sedas premium para uma experiência única'
   },
   {
     id: '4',
     name: 'Dichavadores',
     slug: 'dichavadores',
-    image: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400',
+    image: '',
     description: 'Dichavadores de metal e madeira'
   },
   {
     id: '5',
     name: 'Isqueiros e Cinzeiros',
     slug: 'isqueiros-cinzeiros',
-    image: 'https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=400',
+    image: '',
     description: 'Isqueiros premium e cinzeiros decorativos'
   },
   {
     id: '6',
     name: 'Acessórios',
     slug: 'acessorios',
-    image: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400',
+    image: '',
     description: 'Todos os acessórios que você precisa'
   }
 ];
