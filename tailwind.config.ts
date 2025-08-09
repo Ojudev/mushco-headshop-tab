@@ -70,8 +70,8 @@ export default {
 					200: '#bbf7d0',
 					300: '#86efac',
 					400: '#4ade80',
-					500: 'hsl(var(--green-primary))',
-					600: 'hsl(var(--green-hover))',
+					500: '#2E7D32', /* Verde primário */
+					600: '#1B5E20', /* Verde escuro */
 					700: '#15803d',
 					800: '#166534',
 					900: '#14532d',
@@ -82,11 +82,23 @@ export default {
 					200: '#e9d5ff',
 					300: '#d8b4fe',
 					400: '#c084fc',
-					500: 'hsl(var(--purple-secondary))',
-					600: '#9333ea',
+					500: '#6C00FF', /* Roxo terciário */
+					600: '#5A00E6',
 					700: '#7c3aed',
 					800: '#6b21a8',
 					900: '#581c87',
+				},
+				cream: {
+					50: '#FDFCF8',
+					100: '#FAF7F0',
+					200: '#F7F3E9',
+					300: '#F0EBDD',
+					400: '#E8E1D1',
+					500: '#E0D7C5',
+					600: '#D8CDB9',
+					700: '#C9BAAB',
+					800: '#B8A596',
+					900: '#A79082',
 				}
 			},
 			borderRadius: {

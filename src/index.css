@@ -7,65 +7,67 @@
 /* MJ HeadShop Design System */
 @layer base {
   :root {
-    --background: 43 30% 96%; /* Bege mais claro */
+    --background: 45 25% 94%; /* Creme off-white */
     --foreground: 0 0% 10%; /* Preto suave */
 
-    --card: 0 0% 100%; /* Branco puro para cards */
+    --card: 45 25% 98%; /* Creme claro para cards */
     --card-foreground: 0 0% 10%;
 
-    --popover: 0 0% 100%;
+    --popover: 45 25% 98%;
     --popover-foreground: 0 0% 10%;
 
-    --primary: 270 100% 30%; /* Roxo escuro vibrante */
+    --primary: 120 60% 15%; /* Verde escuro */
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 120 60% 25%; /* Verde folha */
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 120 40% 85%; /* Verde claro */
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: 43 15% 90%;
+    --muted: 45 15% 88%;
     --muted-foreground: 0 0% 45%;
 
-    --accent: 270 80% 50%; /* Roxo vibrante */
+    --accent: 270 100% 30%; /* Roxo (ex-primário) */
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 43 20% 85%;
-    --input: 0 0% 100%;
-    --ring: 270 100% 30%;
+    --border: 45 20% 82%;
+    --input: 45 25% 98%;
+    --ring: 120 60% 15%;
 
     --radius: 0.75rem;
 
     /* MJ HeadShop colors */
-    --mj-purple: 270 100% 30%;
+    --mj-green: 120 60% 15%; /* Nova cor primária verde escuro */
+    --mj-green-light: 120 40% 85%; /* Verde claro */
+    --mj-purple: 270 100% 30%; /* Agora terciária */
     --mj-purple-vibrant: 270 100% 50%;
     --mj-orange: 25 100% 52%;
-    --mj-beige: 43 30% 96%;
-    --mj-white: 0 0% 100%;
+    --mj-cream: 45 25% 94%; /* Nova cor base creme */
+    --mj-cream-light: 45 25% 98%;
     --mj-dark: 0 0% 10%;
   }
 
   .dark {
-    --background: 43 30% 96%;
+    --background: 45 25% 94%;
     --foreground: 0 0% 10%;
-    --card: 0 0% 100%;
+    --card: 45 25% 98%;
     --card-foreground: 0 0% 10%;
-    --popover: 0 0% 100%;
+    --popover: 45 25% 98%;
     --popover-foreground: 0 0% 10%;
-    --primary: 270 100% 30%;
+    --primary: 120 60% 15%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 120 60% 25%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 43 15% 90%;
+    --secondary: 120 40% 85%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 45 15% 88%;
     --muted-foreground: 0 0% 45%;
-    --accent: 270 80% 50%;
+    --accent: 270 100% 30%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
-    --border: 43 20% 85%;
-    --input: 0 0% 100%;
-    --ring: 270 100% 30%;
+    --border: 45 20% 82%;
+    --input: 45 25% 98%;
+    --ring: 120 60% 15%;
   }
 }
 
@@ -75,7 +77,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    background: #FFF8EE;
+    background: #F7F3E9; /* Creme off-white */
     min-height: 100vh;
     font-family: 'Chakra Petch', system-ui, sans-serif;
     position: relative;
@@ -89,8 +91,8 @@
     right: 0;
     bottom: 0;
     background-image: 
-      radial-gradient(circle at 20% 30%, rgba(120, 53, 180, 0.02) 0%, transparent 50%),
-      radial-gradient(circle at 80% 70%, rgba(34, 139, 34, 0.01) 0%, transparent 50%);
+      radial-gradient(circle at 20% 30%, rgba(34, 139, 34, 0.02) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(120, 53, 180, 0.01) 0%, transparent 50%);
     pointer-events: none;
     z-index: -1;
   }
@@ -98,65 +100,79 @@
 
 @layer components {
   /* MJ HeadShop Gradients */
-  .mj-purple-gradient {
-    background: linear-gradient(135deg, #3D017C 0%, #6C00FF 100%);
+  .mj-green-gradient {
+    background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%);
   }
   
-  .mj-purple-vibrant-gradient {
-    background: linear-gradient(135deg, #6C00FF 0%, #8B5CF6 100%);
+  .mj-green-light-gradient {
+    background: linear-gradient(135deg, #C8E6C9 0%, #A5D6A7 100%);
+  }
+  
+  .mj-purple-gradient {
+    background: linear-gradient(135deg, #3D017C 0%, #6C00FF 100%);
   }
   
   .mj-orange-gradient {
     background: linear-gradient(135deg, #FF6B00 0%, #FF8F00 100%);
   }
   
-  .mj-beige-gradient {
-    background: linear-gradient(135deg, #FFF8EE 0%, #F5F5DC 100%);
+  .mj-cream-gradient {
+    background: linear-gradient(135deg, #F7F3E9 0%, #F0EBDD 100%);
   }
 
   /* Professional Cards */
   .mj-card {
-    @apply bg-white rounded-xl shadow-lg border border-gray-200;
+    background: #FDFCF8; /* Creme muito claro */
+    @apply rounded-xl shadow-lg border border-gray-200;
     transition: all 0.3s ease;
   }
   
   .mj-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 25px rgba(61, 1, 124, 0.15);
+    box-shadow: 0 12px 25px rgba(27, 94, 32, 0.15);
   }
   
   /* Professional Buttons */
   .btn-mj-primary {
     @apply px-6 py-3 rounded-lg font-bold text-white relative overflow-hidden transition-all duration-300;
-    background: #6C00FF;
-    box-shadow: 0 4px 15px rgba(108, 0, 255, 0.3);
+    background: #1B5E20; /* Verde escuro */
+    box-shadow: 0 4px 15px rgba(27, 94, 32, 0.3);
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 700;
   }
   
   .btn-mj-primary:hover {
-    background: #5A00E6;
+    background: #2E7D32;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(108, 0, 255, 0.4);
+    box-shadow: 0 8px 25px rgba(27, 94, 32, 0.4);
   }
 
   .btn-mj-secondary {
     @apply px-6 py-3 rounded-lg font-bold transition-all duration-300;
-    background: white;
-    color: #6C00FF;
-    border: 2px solid #6C00FF;
+    background: #FDFCF8; /* Creme claro */
+    color: #1B5E20; /* Verde escuro */
+    border: 2px solid #1B5E20;
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 700;
   }
   
   .btn-mj-secondary:hover {
-    background: #6C00FF;
-    color: white;
+    background: #1B5E20;
+    color: #FDFCF8;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(108, 0, 255, 0.3);
+    box-shadow: 0 8px 20px rgba(27, 94, 32, 0.3);
   }
 
   /* Professional Glow Text */
+  .mj-glow-green {
+    color: #1B5E20;
+    text-shadow: 
+      0 0 10px rgba(27, 94, 32, 0.3),
+      0 0 20px rgba(27, 94, 32, 0.2);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+  }
+
   .mj-glow-purple {
     color: #6C00FF;
     text-shadow: 
@@ -167,18 +183,18 @@
   }
 
   .mj-glow-white {
-    color: white;
+    color: #FDFCF8;
     text-shadow: 
-      0 0 10px rgba(108, 0, 255, 0.5),
-      0 0 20px rgba(108, 0, 255, 0.3),
-      0 0 30px rgba(108, 0, 255, 0.2);
+      0 0 10px rgba(27, 94, 32, 0.5),
+      0 0 20px rgba(27, 94, 32, 0.3),
+      0 0 30px rgba(27, 94, 32, 0.2);
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
   }
 
   /* Header styling */
   .mj-header {
-    background: #3D017C;
+    background: #1B5E20; /* Verde escuro */
     position: relative;
   }
 
@@ -234,14 +250,14 @@
 @keyframes mj-glow-pulse {
   0%, 100% {
     text-shadow: 
-      0 0 10px rgba(108, 0, 255, 0.3),
-      0 0 20px rgba(108, 0, 255, 0.2);
+      0 0 10px rgba(27, 94, 32, 0.3),
+      0 0 20px rgba(27, 94, 32, 0.2);
   }
   50% {
     text-shadow: 
-      0 0 15px rgba(108, 0, 255, 0.5),
-      0 0 30px rgba(108, 0, 255, 0.3),
-      0 0 40px rgba(108, 0, 255, 0.2);
+      0 0 15px rgba(27, 94, 32, 0.5),
+      0 0 30px rgba(27, 94, 32, 0.3),
+      0 0 40px rgba(27, 94, 32, 0.2);
   }
 }
 
@@ -272,24 +288,24 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #F5F5DC;
+  background: #F7F3E9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #3D017C, #6C00FF);
+  background: linear-gradient(135deg, #1B5E20, #2E7D32);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #6C00FF, #8B5CF6);
+  background: linear-gradient(135deg, #2E7D32, #388E3C);
 }
 
 /* Responsive utilities */
 @media (max-width: 768px) {
-  .mj-glow-purple, .mj-glow-white {
+  .mj-glow-green, .mj-glow-purple, .mj-glow-white {
     text-shadow: 
-      0 0 5px rgba(108, 0, 255, 0.3),
-      0 0 10px rgba(108, 0, 255, 0.2);
+      0 0 5px rgba(27, 94, 32, 0.3),
+      0 0 10px rgba(27, 94, 32, 0.2);
   }
   
   .btn-mj-primary, .btn-mj-secondary {
