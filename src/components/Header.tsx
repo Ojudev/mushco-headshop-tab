@@ -5,9 +5,10 @@ import { Search, User, Heart, ShoppingCart, Menu, X, Leaf } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import { categories } from '../data/mockData';
+import { useCategories } from '../hooks/useCategories';
 
 const Header = () => {
+  const { data: categories = [] } = useCategories();
   const { state, dispatch } = useStore();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -35,7 +36,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-purple-600 to-purple-700 text-white py-3 text-center text-sm font-bold mj-text shadow-sm">
+      <div className="bg-gradient-to-r from-green-600 to-green-700 text-white py-3 text-center text-sm font-bold mj-text shadow-sm">
         <p className="flex items-center justify-center space-x-2">
           <Leaf className="w-4 h-4" />
           <span>🌿 Frete grátis para pedidos acima de R$ 200! No estilo, com qualidade 🌿</span>
@@ -49,7 +50,7 @@ const Header = () => {
           <div className="flex items-center justify-between gap-4">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3 group">
-              <div className="w-12 h-12 mj-purple-vibrant-gradient rounded-xl flex items-center justify-center text-white font-bold relative overflow-hidden transition-all duration-300 group-hover:scale-105">
+              <div className="w-12 h-12 mj-green-gradient rounded-xl flex items-center justify-center text-white font-bold relative overflow-hidden transition-all duration-300 group-hover:scale-105">
                 <span className="mj-title text-lg">MC</span>
                 <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
               </div>
@@ -57,7 +58,7 @@ const Header = () => {
                 <span className="mj-title text-xl text-white font-black">
                   Mush Co.
                 </span>
-                <p className="text-xs text-purple-200 mj-text">No estilo, com qualidade 🌿</p>
+                <p className="text-xs text-green-200 mj-text">No estilo, com qualidade 🌿</p>
               </div>
             </Link>
 
@@ -69,7 +70,7 @@ const Header = () => {
                   placeholder="Buscar produtos..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pr-12 bg-white border-white/30 text-gray-800 placeholder-gray-500 focus:bg-white focus:border-purple-400 transition-all duration-300 mj-text"
+                  className="pr-12 bg-white border-white/30 text-gray-800 placeholder-gray-500 focus:bg-white focus:border-green-400 transition-all duration-300 mj-text"
                 />
                 <Button 
                   type="submit" 
@@ -101,7 +102,7 @@ const Header = () => {
                   variant="ghost" 
                   size="sm" 
                   onClick={handleLogin} 
-                  className="flex items-center space-x-2 bg-white text-purple-600 hover:bg-white/90 font-semibold mj-text px-4 py-2 rounded-lg"
+                  className="flex items-center space-x-2 bg-white text-green-600 hover:bg-white/90 font-semibold mj-text px-4 py-2 rounded-lg"
                 >
                   <User className="w-4 h-4" />
                   <span>Entrar</span>
@@ -160,7 +161,7 @@ const Header = () => {
                   variant="ghost" 
                   size="sm" 
                   onClick={handleLogin} 
-                  className="flex items-center space-x-2 bg-white text-purple-600 hover:bg-white/90 font-semibold mj-text px-3 py-2 rounded-lg"
+                  className="flex items-center space-x-2 bg-white text-green-600 hover:bg-white/90 font-semibold mj-text px-3 py-2 rounded-lg"
                 >
                   <User className="w-4 h-4" />
                   <span>Entrar</span>
@@ -218,7 +219,7 @@ const Header = () => {
         </div>
 
         {/* Navigation Menu */}
-        <nav className={`border-t border-purple-800/30 ${isMenuOpen ? 'block' : 'hidden md:block'}`}>
+        <nav className={`border-t border-green-800/30 ${isMenuOpen ? 'block' : 'hidden md:block'}`}>
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row md:items-center md:space-x-8 py-3">
               {categories.map((category, index) => (

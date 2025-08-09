@@ -6,10 +6,11 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
 import { useStore } from '../context/StoreContext';
-import { products } from '../data/mockData';
+import { useProducts } from '../hooks/useProducts';
 import { Button } from '../components/ui/button';
 
 const Favorites = () => {
+  const { data: products = [] } = useProducts();
   const { state } = useStore();
   const navigate = useNavigate();
 

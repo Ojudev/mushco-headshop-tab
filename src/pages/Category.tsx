@@ -5,11 +5,14 @@ import { ArrowLeft, Filter, Grid, List } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
-import { products, categories } from '../data/mockData';
+import { useProducts } from '../hooks/useProducts';
+import { useCategories } from '../hooks/useCategories';
 import { Button } from '../components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 
 const Category = () => {
+  const { data: products = [] } = useProducts();
+  const { data: categories = [] } = useCategories();
   const { slug } = useParams();
   const navigate = useNavigate();
   const [sortBy, setSortBy] = useState('relevance');

@@ -5,12 +5,13 @@ import { Heart, ShoppingCart, Star, Truck, Shield, ArrowLeft } from 'lucide-reac
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
-import { products } from '../data/mockData';
+import { useProducts } from '../hooks/useProducts';
 import { useStore } from '../context/StoreContext';
 import { Button } from '../components/ui/button';
 import { toast } from 'sonner';
 
 const ProductDetail = () => {
+  const { data: products = [] } = useProducts();
   const { id } = useParams();
   const navigate = useNavigate();
   const { state, dispatch } = useStore();

@@ -6,10 +6,14 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import BannerCarousel from '../components/BannerCarousel';
 import ProductCard from '../components/ProductCard';
-import { products, categories } from '../data/mockData';
+import { useProducts } from '../hooks/useProducts';
+import { useCategories } from '../hooks/useCategories';
 import { Button } from '../components/ui/button';
 
 const Index = () => {
+  const { data: products = [] } = useProducts();
+  const { data: categories = [] } = useCategories();
+  
   const bestSellers = products.filter(p => p.isBestSeller).slice(0, 4);
   const newProducts = products.filter(p => p.isNew).slice(0, 4);
   const onSale = products.filter(p => p.discount).slice(0, 4);
@@ -27,7 +31,7 @@ const Index = () => {
         {/* Categorias */}
         <section className="container mx-auto px-4 py-16 relative">
           <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-black mb-6 mj-glow-purple animate-mj-glow-pulse mj-title">
+            <h2 className="text-4xl md:text-5xl font-black mb-6 mj-glow-green animate-mj-glow-pulse mj-title">
               NOSSAS CATEGORIAS
             </h2>
             <p className="text-gray-700 max-w-3xl mx-auto text-lg md:text-xl mj-body-text">
@@ -43,12 +47,12 @@ const Index = () => {
                 className="group text-center space-y-4 p-6 mj-card hover:scale-105 transition-all duration-300 animate-slide-in-right"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="aspect-square overflow-hidden rounded-xl bg-gradient-to-br from-purple-100 to-purple-200 border border-purple-200 relative">
+                <div className="aspect-square overflow-hidden rounded-xl bg-gradient-to-br from-green-100 to-green-200 border border-green-200 relative">
                   <div className="w-full h-full flex items-center justify-center">
-                    <Leaf className="w-12 h-12 text-purple-600" />
+                    <Leaf className="w-12 h-12 text-green-600" />
                   </div>
                 </div>
-                <h3 className="font-bold text-lg group-hover:text-purple-700 transition-colors mj-glow-purple mj-text">
+                <h3 className="font-bold text-lg group-hover:text-green-700 transition-colors mj-glow-green mj-text">
                   {category.name}
                 </h3>
               </Link>
@@ -62,7 +66,7 @@ const Index = () => {
             <div className="flex items-center space-x-4">
               <Flame className="w-10 h-10 text-orange-500 animate-pulse" />
               <div>
-                <h2 className="text-4xl md:text-5xl font-black mj-glow-purple animate-mj-glow-pulse mj-title">MAIS VENDIDOS</h2>
+                <h2 className="text-4xl md:text-5xl font-black mj-glow-green animate-mj-glow-pulse mj-title">MAIS VENDIDOS</h2>
                 <p className="text-gray-700 text-lg mt-2 mj-body-text">Os favoritos dos nossos clientes</p>
               </div>
             </div>
@@ -85,7 +89,7 @@ const Index = () => {
 
         {/* Seção de Promoção Especial */}
         <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 mj-purple-gradient"></div>
+          <div className="absolute inset-0 mj-green-gradient"></div>
           
           {/* Animated background elements */}
           <div className="absolute inset-0">
@@ -111,7 +115,7 @@ const Index = () => {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
                 <Link to="/categoria/sedas">
-                  <Button className="btn-mj-secondary bg-white text-purple-600 text-xl px-12 py-6 transform hover:scale-110 transition-all duration-300 shadow-2xl">
+                  <Button className="btn-mj-secondary bg-white text-green-600 text-xl px-12 py-6 transform hover:scale-110 transition-all duration-300 shadow-2xl">
                     VER OFERTAS
                   </Button>
                 </Link>
@@ -129,9 +133,9 @@ const Index = () => {
         <section className="container mx-auto px-4 py-16">
           <div className="flex items-center justify-between mb-12 animate-fade-in-up">
             <div className="flex items-center space-x-4">
-              <Sparkles className="w-10 h-10 text-purple-600 animate-pulse" />
+              <Sparkles className="w-10 h-10 text-green-600 animate-pulse" />
               <div>
-                <h2 className="text-4xl md:text-5xl font-black mj-glow-purple animate-mj-glow-pulse mj-title">LANÇAMENTOS</h2>
+                <h2 className="text-4xl md:text-5xl font-black mj-glow-green animate-mj-glow-pulse mj-title">LANÇAMENTOS</h2>
                 <p className="text-gray-700 text-lg mt-2 mj-body-text">Os produtos mais novos da nossa coleção</p>
               </div>
             </div>
@@ -154,7 +158,7 @@ const Index = () => {
 
         {/* Ofertas no Precinho */}
         <section className="py-16 relative">
-          <div className="absolute inset-0 mj-purple-gradient"></div>
+          <div className="absolute inset-0 mj-green-gradient"></div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="flex items-center justify-between mb-12 animate-fade-in-up">
               <div className="flex items-center space-x-4">
@@ -164,11 +168,11 @@ const Index = () => {
                 </div>
                 <div>
                   <h2 className="text-4xl md:text-5xl font-black mj-glow-white mj-title">OFERTAS NO PRECINHO</h2>
-                  <p className="text-purple-200 text-lg mt-2 mj-body-text">Descontos reais pra você economizar com estilo</p>
+                  <p className="text-green-200 text-lg mt-2 mj-body-text">Descontos reais pra você economizar com estilo</p>
                 </div>
               </div>
               <Link to="/promocoes">
-                <Button className="btn-mj-secondary bg-white text-purple-600 hidden md:flex items-center space-x-2">
+                <Button className="btn-mj-secondary bg-white text-green-600 hidden md:flex items-center space-x-2">
                   <span>Ver Todas</span>
                   <ArrowRight className="w-5 h-5" />
                 </Button>
@@ -188,7 +192,7 @@ const Index = () => {
         {/* Vantagens da Mush Co. */}
         <section className="container mx-auto px-4 py-20">
           <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-black mb-6 mj-glow-purple animate-mj-glow-pulse mj-title">
+            <h2 className="text-4xl md:text-5xl font-black mb-6 mj-glow-green animate-mj-glow-pulse mj-title">
               VANTAGENS DA MUSH CO.
             </h2>
             <p className="text-gray-700 text-xl mj-body-text">Por que escolher a Mush Co.</p>
