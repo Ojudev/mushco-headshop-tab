@@ -16,16 +16,16 @@
     --popover: 45 25% 98%;
     --popover-foreground: 0 0% 10%;
 
-    --primary: 120 60% 15%; /* Verde escuro */
+    --primary: 90 25% 35%; /* Verde musgo natural */
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 120 40% 85%; /* Verde claro */
-    --secondary-foreground: 0 0% 10%;
+    --secondary: 45 30% 88%; /* Bege claro natural */
+    --secondary-foreground: 0 0% 15%;
 
-    --muted: 45 15% 88%;
+    --muted: 45 20% 85%;
     --muted-foreground: 0 0% 45%;
 
-    --accent: 270 100% 30%; /* Roxo (ex-primário) */
+    --accent: 270 80% 45%; /* Roxo vibrante do olho */
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
@@ -38,13 +38,14 @@
     --radius: 0.75rem;
 
     /* MJ HeadShop colors */
-    --mj-green: 120 60% 15%; /* Nova cor primária verde escuro */
-    --mj-green-light: 120 40% 85%; /* Verde claro */
-    --mj-purple: 270 100% 30%; /* Agora terciária */
-    --mj-purple-vibrant: 270 100% 50%;
+    --mj-green: 90 25% 35%; /* Verde musgo natural do cogumelo */
+    --mj-green-light: 90 20% 75%; /* Verde claro natural */
+    --mj-green-stem: 45 35% 75%; /* Bege esverdeado do caule */
+    --mj-purple: 270 80% 45%; /* Roxo do olho */
+    --mj-purple-vibrant: 270 100% 60%;
     --mj-orange: 25 100% 52%;
-    --mj-cream: 45 25% 94%; /* Nova cor base creme */
-    --mj-cream-light: 45 25% 98%;
+    --mj-cream: 45 35% 92%; /* Creme natural */
+    --mj-cream-light: 45 40% 96%;
     --mj-dark: 0 0% 10%;
   }
 
@@ -101,15 +102,15 @@
 @layer components {
   /* MJ HeadShop Gradients */
   .mj-green-gradient {
-    background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%);
+    background: linear-gradient(135deg, hsl(90, 25%, 35%) 0%, hsl(90, 30%, 40%) 100%);
   }
   
   .mj-green-light-gradient {
-    background: linear-gradient(135deg, #C8E6C9 0%, #A5D6A7 100%);
+    background: linear-gradient(135deg, hsl(90, 20%, 75%) 0%, hsl(90, 25%, 70%) 100%);
   }
   
   .mj-purple-gradient {
-    background: linear-gradient(135deg, #3D017C 0%, #6C00FF 100%);
+    background: linear-gradient(135deg, hsl(270, 80%, 45%) 0%, hsl(270, 100%, 60%) 100%);
   }
   
   .mj-orange-gradient {
@@ -122,45 +123,45 @@
 
   /* Professional Cards */
   .mj-card {
-    background: #FDFCF8; /* Creme muito claro */
+    background: hsl(45, 40%, 96%); /* Creme natural muito claro */
     @apply rounded-xl shadow-lg border border-gray-200;
     transition: all 0.3s ease;
   }
   
   .mj-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 25px rgba(27, 94, 32, 0.15);
+    box-shadow: 0 12px 25px hsla(90, 25%, 35%, 0.15);
   }
   
   /* Professional Buttons */
   .btn-mj-primary {
     @apply px-6 py-3 rounded-lg font-bold text-white relative overflow-hidden transition-all duration-300;
-    background: #1B5E20; /* Verde escuro */
-    box-shadow: 0 4px 15px rgba(27, 94, 32, 0.3);
+    background: hsl(90, 25%, 35%); /* Verde musgo */
+    box-shadow: 0 4px 15px hsla(90, 25%, 35%, 0.3);
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 700;
   }
   
   .btn-mj-primary:hover {
-    background: #2E7D32;
+    background: hsl(90, 30%, 40%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(27, 94, 32, 0.4);
+    box-shadow: 0 8px 25px hsla(90, 25%, 35%, 0.4);
   }
 
   .btn-mj-secondary {
     @apply px-6 py-3 rounded-lg font-bold transition-all duration-300;
-    background: #FDFCF8; /* Creme claro */
-    color: #1B5E20; /* Verde escuro */
-    border: 2px solid #1B5E20;
+    background: hsl(45, 40%, 96%); /* Creme natural */
+    color: hsl(90, 25%, 35%); /* Verde musgo */
+    border: 2px solid hsl(90, 25%, 35%);
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 700;
   }
   
   .btn-mj-secondary:hover {
-    background: #1B5E20;
-    color: #FDFCF8;
+    background: hsl(90, 25%, 35%);
+    color: hsl(45, 40%, 96%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(27, 94, 32, 0.3);
+    box-shadow: 0 8px 20px hsla(90, 25%, 35%, 0.3);
   }
 
   /* Professional Glow Text */
@@ -194,7 +195,7 @@
 
   /* Header styling */
   .mj-header {
-    background: #1B5E20; /* Verde escuro */
+    background: hsl(90, 25%, 35%); /* Verde musgo natural */
     position: relative;
   }
 

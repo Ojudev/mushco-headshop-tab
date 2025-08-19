@@ -50,9 +50,12 @@ const Header = () => {
           <div className="flex items-center justify-between gap-4">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3 group">
-              <div className="w-12 h-12 mj-green-gradient rounded-xl flex items-center justify-center text-white font-bold relative overflow-hidden transition-all duration-300 group-hover:scale-105">
-                <span className="mj-title text-lg">MC</span>
-                <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+              <div className="w-12 h-12 flex items-center justify-center relative transition-all duration-300 group-hover:scale-105">
+                <img 
+                  src="/lovable-uploads/02678cb3-6a06-46c2-8067-0bffbbc7ded5.png" 
+                  alt="Mush Co. Logo" 
+                  className="w-10 h-10 object-contain"
+                />
               </div>
               <div className="hidden sm:block">
                 <span className="mj-title text-xl text-white font-black">
