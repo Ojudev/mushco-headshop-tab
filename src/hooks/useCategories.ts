@@ -3,11 +3,28 @@ import { categoryService } from '@/services/api';
 import { Category } from '@/types';
 import { useToast } from '@/hooks/use-toast';
 
+// Categorias temporárias até backend estar conectado
+const tempCategories: Category[] = [
+  { id: '1', name: 'Cogumelos Frescos', slug: 'cogumelos-frescos', image: '', description: 'Cogumelos frescos selecionados' },
+  { id: '2', name: 'Cogumelos Secos', slug: 'cogumelos-secos', image: '', description: 'Cogumelos desidratados' },
+  { id: '3', name: 'Kits de Cultivo', slug: 'kits-cultivo', image: '', description: 'Cultive seus próprios cogumelos' },
+  { id: '4', name: 'Suplementos', slug: 'suplementos', image: '', description: 'Suplementos naturais' },
+  { id: '5', name: 'Extratos', slug: 'extratos', image: '', description: 'Extratos concentrados' },
+];
+
 // Hook para buscar todas as categorias
 export const useCategories = () => {
   return useQuery({
     queryKey: ['categories'],
-    queryFn: categoryService.getAll,
+    queryFn: async () => {
+      try {
+        return await categoryService.getAll();
+      } catch (error) {
+        // Retorna categorias temporárias se API não estiver disponível
+        console.warn('API não disponível, usando categorias temporárias');
+        return tempCategories;
+      }
+    },
     staleTime: 10 * 60 * 1000, // 10 minutos
   });
 };
