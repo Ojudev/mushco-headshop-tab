@@ -9,7 +9,7 @@ const tempCategories: Category[] = [
   { id: '2', name: 'Cogumelos Secos', slug: 'cogumelos-secos', image: '', description: 'Cogumelos desidratados' },
   { id: '3', name: 'Kits de Cultivo', slug: 'kits-cultivo', image: '', description: 'Cultive seus próprios cogumelos' },
   { id: '4', name: 'Suplementos', slug: 'suplementos', image: '', description: 'Suplementos naturais' },
-  { id: '5', name: 'Extratos', slug: 'extratos', image: '', description: 'Extratos concentrados' },
+  { id: '5', name: 'TESTE', slug: 'extratos', image: '', description: 'Extratos concentrados' },
 ];
 
 // Hook para buscar todas as categorias
