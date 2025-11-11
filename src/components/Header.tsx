@@ -1,11 +1,18 @@
 
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, User, Heart, ShoppingCart, Menu, X, Leaf } from 'lucide-react';
+import { Search, User, Heart, ShoppingCart, Menu, X, Leaf, Package, MapPin, Wallet, Settings, LogOut } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { useCategories } from '../hooks/useCategories';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from './ui/dropdown-menu';
 
 const Header = () => {
   const { data: categories = [] } = useCategories();
@@ -89,17 +96,45 @@ const Header = () => {
             <div className="hidden md:flex items-center space-x-3">
               {/* User Menu */}
               {state.isAuthenticated ? (
-                <div className="flex items-center space-x-3 bg-white/10 rounded-lg px-3 py-2 backdrop-blur-sm">
-                  <img 
-                    src={state.user?.avatar} 
-                    alt={state.user?.name}
-                    className="w-8 h-8 rounded-full border-2 border-white/30"
-                  />
-                  <span className="text-sm text-white font-semibold mj-text">{state.user?.name}</span>
-                  <Button variant="ghost" size="sm" onClick={handleLogout} className="text-white hover:bg-white/20 mj-text font-semibold">
-                    Sair
-                  </Button>
-                </div>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <div className="flex items-center space-x-3 bg-white/10 rounded-lg px-3 py-2 backdrop-blur-sm cursor-pointer hover:bg-white/20 transition-all duration-300">
+                      <img 
+                        src={state.user?.avatar} 
+                        alt={state.user?.name}
+                        className="w-8 h-8 rounded-full border-2 border-white/30"
+                      />
+                      <span className="text-sm text-white font-semibold mj-text">{state.user?.name}</span>
+                    </div>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-56 bg-popover">
+                    <DropdownMenuItem className="cursor-pointer">
+                      <User className="mr-2 h-4 w-4" />
+                      <span>Minha Conta</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="cursor-pointer">
+                      <Package className="mr-2 h-4 w-4" />
+                      <span>Meus Pedidos</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="cursor-pointer">
+                      <Settings className="mr-2 h-4 w-4" />
+                      <span>Meus Dados</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="cursor-pointer">
+                      <MapPin className="mr-2 h-4 w-4" />
+                      <span>Endereço</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="cursor-pointer">
+                      <Wallet className="mr-2 h-4 w-4" />
+                      <span>Carteira</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-red-600">
+                      <LogOut className="mr-2 h-4 w-4" />
+                      <span>Sair</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               ) : (
                 <Button 
                   variant="ghost" 
@@ -204,19 +239,47 @@ const Header = () => {
           {/* Mobile User Info - Only show when authenticated */}
           {state.isAuthenticated && (
             <div className="mt-4 md:hidden">
-              <div className="flex items-center justify-between bg-white/10 rounded-lg p-3 backdrop-blur-sm">
-                <div className="flex items-center space-x-3">
-                  <img 
-                    src={state.user?.avatar} 
-                    alt={state.user?.name}
-                    className="w-8 h-8 rounded-full border-2 border-white/30"
-                  />
-                  <span className="text-sm text-white font-semibold mj-text">{state.user?.name}</span>
-                </div>
-                <Button variant="ghost" size="sm" onClick={handleLogout} className="text-white hover:bg-white/20 mj-text font-semibold">
-                  Sair
-                </Button>
-              </div>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <div className="flex items-center justify-between bg-white/10 rounded-lg p-3 backdrop-blur-sm cursor-pointer hover:bg-white/20 transition-all duration-300">
+                    <div className="flex items-center space-x-3">
+                      <img 
+                        src={state.user?.avatar} 
+                        alt={state.user?.name}
+                        className="w-8 h-8 rounded-full border-2 border-white/30"
+                      />
+                      <span className="text-sm text-white font-semibold mj-text">{state.user?.name}</span>
+                    </div>
+                  </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56 bg-popover">
+                  <DropdownMenuItem className="cursor-pointer">
+                    <User className="mr-2 h-4 w-4" />
+                    <span>Minha Conta</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer">
+                    <Package className="mr-2 h-4 w-4" />
+                    <span>Meus Pedidos</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer">
+                    <Settings className="mr-2 h-4 w-4" />
+                    <span>Meus Dados</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer">
+                    <MapPin className="mr-2 h-4 w-4" />
+                    <span>Endereço</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer">
+                    <Wallet className="mr-2 h-4 w-4" />
+                    <span>Carteira</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-red-600">
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Sair</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           )}
         </div>
