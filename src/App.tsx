@@ -18,6 +18,12 @@ import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import Returns from "./pages/Returns";
 import NotFound from "./pages/NotFound";
+import Account from "./pages/Account";
+import MyOrders from "./pages/MyOrders";
+import MyData from "./pages/MyData";
+import MyAddress from "./pages/MyAddress";
+import Support from "./pages/Support";
+import Wallet from "./pages/Wallet";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +50,12 @@ const App = () => (
             <Route path="/mais-vendidos" element={<Category />} />
             <Route path="/lancamentos" element={<Category />} />
             <Route path="/promocoes" element={<Category />} />
+            <Route path="/minha-conta" element={<Account />} />
+            <Route path="/minha-conta/pedidos" element={<MyOrders />} />
+            <Route path="/minha-conta/dados" element={<MyData />} />
+            <Route path="/minha-conta/endereco" element={<MyAddress />} />
+            <Route path="/minha-conta/atendimento" element={<Support />} />
+            <Route path="/minha-conta/carteira" element={<Wallet />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -108,25 +108,35 @@ const Header = () => {
                     </div>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-56 bg-popover">
-                    <DropdownMenuItem className="cursor-pointer">
-                      <User className="mr-2 h-4 w-4" />
-                      <span>Minha Conta</span>
+                    <DropdownMenuItem asChild className="cursor-pointer">
+                      <Link to="/minha-conta" className="flex items-center w-full">
+                        <User className="mr-2 h-4 w-4" />
+                        <span>Minha Conta</span>
+                      </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="cursor-pointer">
-                      <Package className="mr-2 h-4 w-4" />
-                      <span>Meus Pedidos</span>
+                    <DropdownMenuItem asChild className="cursor-pointer">
+                      <Link to="/minha-conta/pedidos" className="flex items-center w-full">
+                        <Package className="mr-2 h-4 w-4" />
+                        <span>Meus Pedidos</span>
+                      </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="cursor-pointer">
-                      <Settings className="mr-2 h-4 w-4" />
-                      <span>Meus Dados</span>
+                    <DropdownMenuItem asChild className="cursor-pointer">
+                      <Link to="/minha-conta/dados" className="flex items-center w-full">
+                        <Settings className="mr-2 h-4 w-4" />
+                        <span>Meus Dados</span>
+                      </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="cursor-pointer">
-                      <MapPin className="mr-2 h-4 w-4" />
-                      <span>Endereço</span>
+                    <DropdownMenuItem asChild className="cursor-pointer">
+                      <Link to="/minha-conta/endereco" className="flex items-center w-full">
+                        <MapPin className="mr-2 h-4 w-4" />
+                        <span>Endereço</span>
+                      </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="cursor-pointer">
-                      <Wallet className="mr-2 h-4 w-4" />
-                      <span>Carteira</span>
+                    <DropdownMenuItem asChild className="cursor-pointer">
+                      <Link to="/minha-conta/carteira" className="flex items-center w-full">
+                        <Wallet className="mr-2 h-4 w-4" />
+                        <span>Carteira</span>
+                      </Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-red-600">
@@ -253,25 +263,35 @@ const Header = () => {
                   </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56 bg-popover">
-                  <DropdownMenuItem className="cursor-pointer">
-                    <User className="mr-2 h-4 w-4" />
-                    <span>Minha Conta</span>
+                  <DropdownMenuItem asChild className="cursor-pointer">
+                    <Link to="/minha-conta" className="flex items-center w-full">
+                      <User className="mr-2 h-4 w-4" />
+                      <span>Minha Conta</span>
+                    </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="cursor-pointer">
-                    <Package className="mr-2 h-4 w-4" />
-                    <span>Meus Pedidos</span>
+                  <DropdownMenuItem asChild className="cursor-pointer">
+                    <Link to="/minha-conta/pedidos" className="flex items-center w-full">
+                      <Package className="mr-2 h-4 w-4" />
+                      <span>Meus Pedidos</span>
+                    </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="cursor-pointer">
-                    <Settings className="mr-2 h-4 w-4" />
-                    <span>Meus Dados</span>
+                  <DropdownMenuItem asChild className="cursor-pointer">
+                    <Link to="/minha-conta/dados" className="flex items-center w-full">
+                      <Settings className="mr-2 h-4 w-4" />
+                      <span>Meus Dados</span>
+                    </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="cursor-pointer">
-                    <MapPin className="mr-2 h-4 w-4" />
-                    <span>Endereço</span>
+                  <DropdownMenuItem asChild className="cursor-pointer">
+                    <Link to="/minha-conta/endereco" className="flex items-center w-full">
+                      <MapPin className="mr-2 h-4 w-4" />
+                      <span>Endereço</span>
+                    </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="cursor-pointer">
-                    <Wallet className="mr-2 h-4 w-4" />
-                    <span>Carteira</span>
+                  <DropdownMenuItem asChild className="cursor-pointer">
+                    <Link to="/minha-conta/carteira" className="flex items-center w-full">
+                      <Wallet className="mr-2 h-4 w-4" />
+                      <span>Carteira</span>
+                    </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-red-600">
