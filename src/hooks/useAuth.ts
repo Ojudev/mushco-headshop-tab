@@ -42,3 +42,4 @@ export const useAuth = () => {
     isAuthenticated: !!user
   };
 };
+
