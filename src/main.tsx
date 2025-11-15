@@ -2,17 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
-import { AuthProvider } from './context/AuthContext.tsx'; // Importe o novo provedor
-import { StoreProvider } from './context/StoreContext.tsx'; // Mantém o StoreProvider
+import { FirebaseAuthProvider } from './context/FirebaseAuthContext.tsx'; 
+import { StoreProvider } from './context/StoreContext.tsx';
 import { Toaster } from './components/ui/toaster.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <AuthProvider>
+    {/* CORREÇÃO: O componente principal usa o provedor do Firebase */}
+    <FirebaseAuthProvider>
       <StoreProvider>
         <App />
         <Toaster />
       </StoreProvider>
-    </AuthProvider>
+    </FirebaseAuthProvider>
   </React.StrictMode>,
 );

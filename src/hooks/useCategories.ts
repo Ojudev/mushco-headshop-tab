@@ -5,11 +5,12 @@ import { useToast } from '@/hooks/use-toast';
 
 // Categorias temporárias até backend estar conectado
 const tempCategories: Category[] = [
-  { id: '1', name: 'Cogumelos Frescos', slug: 'cogumelos-frescos', image: '', description: 'Cogumelos frescos selecionados' },
-  { id: '2', name: 'Cogumelos Secos', slug: 'cogumelos-secos', image: '', description: 'Cogumelos desidratados' },
-  { id: '3', name: 'Kits de Cultivo', slug: 'kits-cultivo', image: '', description: 'Cultive seus próprios cogumelos' },
-  { id: '4', name: 'Suplementos', slug: 'suplementos', image: '', description: 'Suplementos naturais' },
-  { id: '5', name: 'Extratos Concentrados', slug: 'extratos', image: '', description: 'Extratos concentrados' },
+  { id: '1', name: 'Bongs', slug: 'bongs', image: '', description: 'Bongs de Vidro & Silicone' },
+  { id: '2', name: 'Pipes', slug: 'pipes', image: '', description: 'Pipes de Vidro, Metal & Silicone' },
+  { id: '3', name: 'Sedas & Piteiras', slug: 'sedas-piteiras', image: '', description: 'As melhores sedas e piteiras para seu fumo' },
+  { id: '4', name: 'Kits de Cultivo', slug: 'kits-cultivo', image: '', description: 'Cultive seus sua própria Medicina' },
+  { id: '5', name: 'Acessórios', slug: 'acessórios', image: '', description: 'Todos os artigos necessários para sua Sessão' },
+  { id: '6', name: 'Extratos Concentrados', slug: 'extratos', image: '', description: 'Extratos concentrados' },
 ];
 
 // Hook para buscar todas as categorias

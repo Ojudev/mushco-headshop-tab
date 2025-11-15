@@ -1,31 +1,30 @@
 import axios from 'axios';
 import { Product, Category, Order } from '@/types';
+import { auth } from '@/lib/firebase';
 
-// Base URL da sua API
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
+// Base URL da API
+const VITE_API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
 
-// Configuração do axios
 const api = axios.create({
-  baseURL: API_BASE_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  baseURL: VITE_API_BASE_URL,
 });
 
-// Interceptor para adicionar token de autenticação
+
 api.interceptors.request.use(
-  (config) => {
-    // Aqui você pode adicionar o token do Firebase se necessário
-    // const token = await user?.getIdToken();
-    // if (token) {
-    //   config.headers.Authorization = `Bearer ${token}`;
-    // }
+  async (config) => { // 1. Torna a função assíncrona
+    const user = auth.currentUser;
+    if (user) {
+      // 2. Obtém o Token ID (JWT) do Firebase
+      const token = await user.getIdToken();
+      // 3. Anexa o token para o Back-end verificar
+      config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
   },
   (error) => {
     return Promise.reject(error);
   }
-);
 
 // Interceptor para lidar com respostas de erro
 api.interceptors.response.use(
@@ -41,34 +40,32 @@ export const productService = {
   // Buscar todos os produtos
   getAll: async (): Promise<Product[]> => {
     const response = await api.get('/products');
-    return response.data;
+    return response.data.data; 
   },
-
-  // Buscar produto por ID
   getById: async (id: string): Promise<Product> => {
     const response = await api.get(`/products/${id}`);
-    return response.data;
+    return response.data.data; 
   },
-
-  // Buscar produtos por categoria
   getByCategory: async (category: string): Promise<Product[]> => {
     const response = await api.get(`/products/category/${category}`);
-    return response.data;
+    return response.data.data; 
   },
-
-  // Buscar produtos (com filtros)
-  search: async (params: {
-    query?: string;
-    category?: string;
-    minPrice?: number;
-    maxPrice?: number;
-    page?: number;
-    limit?: number;
-  }): Promise<{ products: Product[]; total: number; page: number; totalPages: number }> => {
+  search: async (params: { /* ... */ }): Promise<{ products: Product[]; total: number; page: number; totalPages: number }> => {
     const response = await api.get('/products/search', { params });
-    return response.data;
+    return response.data.data; 
   },
-
+  create: async (product: Omit<Product, 'id'>): Promise<Product> => {
+    const response = await api.post('/products', product);
+    return response.data.data; 
+  },
+  update: async (id: string, product: Partial<Product>): Promise<Product> => {
+    const response = await api.put(`/products/${id}`, product);
+    return response.data.data; 
+  },
+  delete: async (id: string): Promise<void> => {
+    await api.delete(`/products/${id}`);
+  },
+};
   // Criar produto (admin)
   create: async (product: Omit<Product, 'id'>): Promise<Product> => {
     const response = await api.post('/products', product);
@@ -89,79 +86,66 @@ export const productService = {
 
 // Serviços para Categories
 export const categoryService = {
-  // Buscar todas as categorias
   getAll: async (): Promise<Category[]> => {
     const response = await api.get('/categories');
-    return response.data;
+    return response.data.data; 
   },
-
-  // Buscar categoria por slug
   getBySlug: async (slug: string): Promise<Category> => {
     const response = await api.get(`/categories/${slug}`);
-    return response.data;
+    return response.data.data; 
   },
-
-  // Criar categoria (admin)
   create: async (category: Omit<Category, 'id'>): Promise<Category> => {
     const response = await api.post('/categories', category);
-    return response.data;
+    return response.data.data; 
   },
-
-  // Atualizar categoria (admin)
   update: async (id: string, category: Partial<Category>): Promise<Category> => {
     const response = await api.put(`/categories/${id}`, category);
-    return response.data;
+    return response.data.data; 
   },
-
-  // Deletar categoria (admin)
   delete: async (id: string): Promise<void> => {
     await api.delete(`/categories/${id}`);
   },
 };
-
+ 
 // Serviços para Orders
 export const orderService = {
-  // Criar pedido
-  create: async (orderData: {
-    items: Array<{ productId: string; quantity: number; price: number }>;
-    shippingAddress: any;
-    paymentMethod: string;
-  }): Promise<Order> => {
+  create: async (orderData: any): Promise<Order> => {
     const response = await api.post('/orders', orderData);
-    return response.data;
+    return response.data.data; 
   },
-
-  // Buscar pedidos do usuário
-  getUserOrders: async (userId: string): Promise<Order[]> => {
-    const response = await api.get(`/orders/user/${userId}`);
-    return response.data;
+  // CORREÇÃO: Removemos o userId do parâmetro, o token já o fornece.
+  getUserOrders: async (): Promise<Order[]> => {
+    const response = await api.get('/orders'); 
+    return response.data.data; 
   },
-
-  // Buscar pedido por ID
   getById: async (id: string): Promise<Order> => {
     const response = await api.get(`/orders/${id}`);
-    return response.data;
+    return response.data.data; 
   },
-
-  // Atualizar status do pedido (admin)
   updateStatus: async (id: string, status: string): Promise<Order> => {
-    const response = await api.put(`/orders/${id}/status`, { status });
-    return response.data;
+    const response = await api.put(`/orders/admin/${id}/status`, { status });
+    return response.data.data; 
   },
 };
 
-// Serviços para Cart (se quiser sincronizar com backend)
+// Serviços para Cart
 export const cartService = {
-  // Sincronizar carrinho
-  sync: async (userId: string, items: any[]): Promise<void> => {
-    await api.post(`/cart/${userId}/sync`, { items });
+  // Funções que o seu StoreContext usa:
+  addItem: async (productId: string, quantity: number): Promise<any> => {
+    const response = await api.post('/cart', { productId, quantity });
+    return response.data.data;
   },
-
-  // Buscar carrinho do usuário
-  get: async (userId: string): Promise<any[]> => {
-    const response = await api.get(`/cart/${userId}`);
-    return response.data;
+  get: async (): Promise<any> => { 
+    const response = await api.get('/cart');
+    return response.data.data; 
   },
+  removeItem: async (itemId: string): Promise<void> => {
+    await api.delete(`/cart/${itemId}`);
+  },
+  updateItem: async (itemId: string, quantity: number): Promise<any> => {
+    const response = await api.put(`/cart/${itemId}`, { quantity });
+    return response.data.data;
+  }
 };
 
 export default api;
