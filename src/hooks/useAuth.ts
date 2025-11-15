@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
-import { User, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
+import type { User as FirebaseUser } from 'firebase/auth'; 
+import { onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
 import { auth, googleProvider } from '@/lib/firebase';
 
 export const useAuth = () => {
-  const [user, setUser] = useState<User | null>(null);
+  // CORREÇÃO: Usamos o tipo renomeado 'FirebaseUser'
+  const [user, setUser] = useState<FirebaseUser | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    // A função de callback em onAuthStateChanged deve aceitar o tipo 'FirebaseUser | null'
+    const unsubscribe = onAuthStateChanged(auth, (user: FirebaseUser | null) => {
       setUser(user);
       setLoading(false);
     });
@@ -18,7 +21,7 @@ export const useAuth = () => {
   const signInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      return result.user;
+      return result.user; // Retorna o objeto User do Firebase
     } catch (error) {
       console.error('Erro ao fazer login com Google:', error);
       throw error;
@@ -42,4 +45,3 @@ export const useAuth = () => {
     isAuthenticated: !!user
   };
 };
-
